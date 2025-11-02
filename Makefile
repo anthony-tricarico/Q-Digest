@@ -5,7 +5,7 @@ CC = gcc
 CFLAGS = -I include
 
 BUILD_DIR = build
-EXEC_DIR = exec
+EXEC_DIR = bin
 
 all: $(EXEC_DIR)/main
 
