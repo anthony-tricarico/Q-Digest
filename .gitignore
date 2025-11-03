@@ -1,3 +1,5 @@
+# MacOS tmp files
+.DS_Store
 # Custom folders
 bin
 build
