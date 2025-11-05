@@ -3,17 +3,26 @@ vpath %.h include
 
 CC = gcc
 CFLAGS = -I include
+TESTFLAGS = -I include -DTEST
 
 BUILD_DIR = build
 EXEC_DIR = bin
 
 all: $(EXEC_DIR)/main
 test-queue: $(EXEC_DIR)/queue
+test-linked: $(EXEC_DIR)/linked
+test-all: $(EXEC_DIR)/test
 
 .PHONY: clean clean-files-cluster
 
+$(EXEC_DIR)/test: qcore.c dynamic_array.c memory_utils.c | $(EXEC_DIR)
+	$(CC) $(TESTFLAGS) $^ -o $@
+
 $(EXEC_DIR)/queue: queue.c memory_utils.c | $(EXEC_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
+
+$(EXEC_DIR)/linked: linked.c | $(EXEC_DIR)
+	$(CC) $(TESTFLAGS) $^ -o $@
 
 $(EXEC_DIR)/%: $(BUILD_DIR)/%.o | $(EXEC_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
