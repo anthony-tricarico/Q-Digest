@@ -1,8 +1,11 @@
 #include "../include/queue.h"
 #include "../include/memory_utils.h"
-#include "../include/qcore.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#ifdef TEST
+#include "../include/qcore.h"
+#endif
 
 struct queueNode *create_queue_node(Item val) {
   struct queueNode *res = (struct queueNode *)xmalloc(sizeof(struct queueNode));
@@ -61,6 +64,7 @@ Item pop(struct queue *q) {
 
 // TODO: Tests have passed, just review this before completing the
 // implementation
+#ifdef TEST
 int main(void) {
   struct QDigestNode *qdn = xmalloc(sizeof(struct QDigestNode));
   struct QDigestNode *qdn1 = xmalloc(sizeof(struct QDigestNode));
@@ -93,3 +97,4 @@ int main(void) {
   }
   return 0;
 }
+#endif

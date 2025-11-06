@@ -37,4 +37,11 @@ Item front(struct queue *q);
 Item pop(struct queue *q);
 /* Return whether it is empty */
 bool is_empty(struct queue *q);
+
+struct queue *create_queue(void);
+struct queueNode *create_queue_node(Item val);
+Item front(struct queue *q);
+bool is_empty(struct queue *q);
+Item pop(struct queue *q);
+void push(struct queue *q, struct queueNode *n);
 #endif

@@ -35,7 +35,7 @@ bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level,
 void compress(struct QDigest *q, struct QDigestNode *n, int level, int l_max,
               size_t nDivk);
 void print_tree(struct QDigest *q);
-void swap_q(struct QDigest **q1, struct QDigest **q2);
+void swap_q(struct QDigest *a, struct QDigest *b);
 void compress_if_needed(struct QDigest *q);
 void expand_tree(struct QDigest *q, size_t upper_bound);
 void insert(struct QDigest *q, size_t key, unsigned int count,

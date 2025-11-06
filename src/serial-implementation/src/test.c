@@ -4,12 +4,20 @@
 #include <stddef.h>
 #include <string.h>
 
+/* This function prints the real vs computed percentiles according to QDigest
+ * Args:
+ *  double p: the percentile to compute (a value between 0 and 1, inclusive)
+ *  const Array *a: a pointer to a variable of type array containing the data
+ *  struct QDigest *q: a pointer to the QDigest structure
+ * Returns:
+ *  Nothing */
 void compare_percentiles(double p, const Array *a, struct QDigest *q) {
   int ip = (p * 1000 + 9) / 10;
   printf("%dth percentile: %lu v/s %lu\n", ip, a->data[(int)(p * a->size - 1)],
          percentile(q, p));
 }
 
+/* This function tests a QDigest against a Poisson distribution */
 void test_poisson_distribution(int n, int k, int seed) {
   printf("<< test_poisson_distribution >>\n");
   int number = 1;
@@ -19,7 +27,7 @@ void test_poisson_distribution(int n, int k, int seed) {
   init_array(a, 128);
   for (; get_length(a) != n; ++number) {
     for (int i = 0; i < repeat && get_length(a) != n; ++i) {
-      push_back(a, number);
+      push_back(a, number); // add number to dynamic array
     }
     if (get_length(a) <= n / 2) {
       if (!flipped)
@@ -34,7 +42,7 @@ void test_poisson_distribution(int n, int k, int seed) {
       repeat = 2;
   }
 
-  Array *b = malloc(sizeof(Array));
+  Array *b = xmalloc(sizeof(Array));
   init_array(b, a->capacity);
   memcpy(b->data, a->data, sizeof(DAItem) * a->size);
   b->size = a->size;
@@ -43,10 +51,13 @@ void test_poisson_distribution(int n, int k, int seed) {
 
   // use the default parameter of for the upper bound 1 declared in the c++
   // constructor
+  // printf("DEBUG: Before creating tree\n");
   struct QDigest *q = create_tmp_q(k, 1);
+  // printf("DEBUG: After creating tree\n");
   for (size_t i = 0; i < get_length(b); ++i) {
     insert(q, b->data[i], 1, true);
   }
+
   compare_percentiles(0.01, a, q);
   compare_percentiles(0.02, a, q);
   compare_percentiles(0.03, a, q);
@@ -55,7 +66,7 @@ void test_poisson_distribution(int n, int k, int seed) {
   }
 }
 
-#ifdef TEST
+#ifdef TESTALL
 int main(void) {
   const int K = 100;
   int seed = 377;

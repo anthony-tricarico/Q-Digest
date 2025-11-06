@@ -75,7 +75,7 @@ size_t node_and_sibling_count(struct QDigestNode *n) {
   if (n->left)
     ret += n->left->count;
   if (n->right)
-    ret += n->left->count;
+    ret += n->right->count;
 
   return ret;
 }
@@ -90,10 +90,12 @@ size_t node_and_sibling_count(struct QDigestNode *n) {
 bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level,
                            int l_max) {
   if (n->count == 0 && (!n->left && !n->right)) {
-    if (n->parent->left == n) {
-      n->parent->left = NULL;
-    } else {
-      n->parent->right = NULL;
+    if (n->parent) {
+      if (n->parent->left == n) {
+        n->parent->left = NULL;
+      } else {
+        n->parent->right = NULL;
+      }
     }
 
     delete_node(n);
@@ -137,10 +139,26 @@ void print_tree(struct QDigest *q) {
 }
 
 /* TODO: implement swap function which should mirror the std::swap from C++ */
-void swap_q(struct QDigest **q1, struct QDigest **q2) {
-  struct QDigest *tmp = *q1;
-  *q1 = *q2;
-  *q2 = tmp;
+void swap_q(struct QDigest *a, struct QDigest *b) {
+  struct QDigestNode *tmp_root = a->root;
+  a->root = b->root;
+  b->root = tmp_root;
+
+  size_t tmp_num_nodes = a->num_nodes;
+  a->num_nodes = b->num_nodes;
+  b->num_nodes = tmp_num_nodes;
+
+  size_t tmp_N = a->N;
+  a->N = b->N;
+  b->N = tmp_N;
+
+  size_t tmp_K = a->K;
+  a->K = b->K;
+  b->K = tmp_K;
+
+  size_t tmp_inserts = a->num_inserts;
+  a->num_inserts = b->num_inserts;
+  b->num_inserts = tmp_inserts;
 }
 
 void compress_if_needed(struct QDigest *q) {
@@ -170,6 +188,7 @@ void insert(struct QDigest *q, size_t key, unsigned int count,
     if (q->root->upper_bound + 1 == new_upper_bound_plus_one) {
       new_upper_bound_plus_one *= 2;
     }
+    // printf("DEBUG: before expand tree\n");
     expand_tree(q, new_upper_bound_plus_one);
   }
   size_t lower_bound = 0;
@@ -273,7 +292,7 @@ void expand_tree(struct QDigest *q, size_t upper_bound) {
   struct QDigest *tmp = create_tmp_q(q->K, upper_bound);
 
   if (q->N == 0) {
-    swap_q(&q, &tmp);
+    swap_q(q, tmp);
     return;
   }
 
@@ -306,7 +325,7 @@ void expand_tree(struct QDigest *q, size_t upper_bound) {
   tmp->num_nodes += q->num_nodes;
   tmp->N = q->N;
 
-  swap_q(&q, &tmp);
+  swap_q(q, tmp);
 }
 
 /*
@@ -326,7 +345,7 @@ size_t postorder_by_rank(struct QDigestNode *n, size_t *curr_rank,
     return val;
 
   val = n->upper_bound;
-  curr_rank += n->count;
+  *curr_rank += n->count;
   return val;
 }
 
@@ -418,5 +437,5 @@ void merge(struct QDigest *q1, const struct QDigest *q2) {
     insert_node(tmp, n);
   }
   compress_if_needed(tmp);
-  swap_q(&q1, &tmp);
+  swap_q(q1, tmp);
 }
