@@ -29,7 +29,10 @@ struct QDigestNode *create_node(size_t lower_bound, size_t upper_bound);
 struct QDigest *create_q(struct QDigestNode *root, size_t num_nodes, size_t N,
                          size_t K, size_t num_inserts);
 struct QDigest *create_tmp_q(size_t K, size_t upper_bound);
+void free_tree(struct QDigestNode *n);
+void delete_qdigest(struct QDigest *q);
 size_t node_and_sibling_count(struct QDigestNode *n);
+void delete_node(struct QDigestNode *n); 
 bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level,
                            int l_max);
 void compress(struct QDigest *q, struct QDigestNode *n, int level, int l_max,

@@ -7,14 +7,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 /* This function is used to compute the base-2 logarithm of a given input n */
 size_t log_2_ceil(size_t n) {
   /* Check if the given n is already a power of 2 with bitwise operations */
+    // edge case
+    if (n == 0) return 0;
   bool is_pow2 = (n & -n) == n;
-  /* Initialize return value to 0 */
   int res = 0;
-  /* While n is greater than 1 increase result by 1 */
   while (n > 1) {
     n /= 2;
     res++;
@@ -43,7 +44,6 @@ struct QDigestNode *create_node(size_t lower_bound, size_t upper_bound) {
 /* This function deletes a node and frees the memory that was allocated to it */
 void delete_node(struct QDigestNode *n) { free(n); }
 
-/* TODO: implement the create_q function similar to what done above */
 struct QDigest *create_q(struct QDigestNode *root, size_t num_nodes, size_t N,
                          size_t K, size_t num_inserts) {
   struct QDigest *ret = xmalloc(sizeof(struct QDigest));
@@ -66,6 +66,26 @@ struct QDigest *create_tmp_q(size_t K, size_t upper_bound) {
   tmp->K = K;
   return tmp;
 }
+
+/* Frees memory that was allocated to the QDigest tree */
+void free_tree(struct QDigestNode *n) {
+    // if NULL pointer no need to free memory
+    if (!n) return;
+    // destroy left subtree
+    free_tree(n->left);
+    // destroy right subtree
+    free_tree(n->right);
+    // free the remaining node
+    free(n);
+}
+
+/* Deletes the entire QDigest by starting from the root
+ * node and freeing recursively the left and right subtree */
+void delete_qdigest(struct QDigest *q) {
+    free_tree(q->root);
+    free(q);
+}
+
 /* This function returns the aggregated count for a node and its siblings. */
 size_t node_and_sibling_count(struct QDigestNode *n) {
   size_t ret = n->count;
@@ -132,13 +152,11 @@ void compress(struct QDigest *q, struct QDigestNode *n, int level, int l_max,
   } // if (level > 0)
 }
 
-/* TODO: implement print_tree */
 void print_tree(struct QDigest *q) {
   printf("[TREE] num_nodes: %lu, (N, K): (%lu, %lu)\n", q->num_nodes, q->N,
          q->K);
 }
 
-/* TODO: implement swap function which should mirror the std::swap from C++ */
 void swap_q(struct QDigest *a, struct QDigest *b) {
   struct QDigestNode *tmp_root = a->root;
   a->root = b->root;
@@ -162,7 +180,6 @@ void swap_q(struct QDigest *a, struct QDigest *b) {
 }
 
 void compress_if_needed(struct QDigest *q) {
-  // TODO: why fixed to 6 (?)
   if (q->num_nodes >= (q->K * 6)) {
     const size_t nDivk = (q->N / q->K);
     const int l_max = log_2_ceil(q->root->upper_bound + 1);
@@ -194,7 +211,6 @@ void insert(struct QDigest *q, size_t key, unsigned int count,
   size_t lower_bound = 0;
   size_t upper_bound = q->root->upper_bound;
 
-  // TODO: should these be managed by malloc (?)
   struct QDigestNode *prev = q->root;
   struct QDigestNode *curr = prev;
 
@@ -292,7 +308,9 @@ void expand_tree(struct QDigest *q, size_t upper_bound) {
   struct QDigest *tmp = create_tmp_q(q->K, upper_bound);
 
   if (q->N == 0) {
-    swap_q(q, tmp);
+        struct QDigest *old = tmp;
+        swap_q(q, tmp);
+        delete_qdigest(old);
     return;
   }
 
@@ -325,7 +343,9 @@ void expand_tree(struct QDigest *q, size_t upper_bound) {
   tmp->num_nodes += q->num_nodes;
   tmp->N = q->N;
 
+    struct QDigest *old = tmp;
   swap_q(q, tmp);
+    delete_qdigest(old);
 }
 
 /*
@@ -379,38 +399,6 @@ size_t percentile(struct QDigest *q, double p) {
 }
 
 /*
- * Serialized format consists of newline separated entries which
- * are triplets of the form: (LB, UB, COUNT)
- *
- * That means that we have a node which has COUNT elements which
- * have values in the range [LB, UB]. Only non-empty ranges will
- * be serialized (i.e., the serialized tree will be sparse). Also,
- * the ranges will be serialized in pre-order tree traversal so
- * that re-construction is easy.
- *
- * */
-char *to_string(struct QDigest *q) {
-
-  struct QDigestNode *r = q->root;
-  char *buf = xmalloc(1000);
-  int offset = 0;
-
-  sprintf(buf + offset, "%lu %lu %lu %lu\n", q->N, q->K, r->lower_bound,
-          r->upper_bound);
-  offset += strlen(buf) + 1;
-  // TODO: this is not writing to anything at the moment
-  // fix this so it writes to buf
-  preorder_to_string(q->root);
-  return buf;
-}
-
-/*
- * Deserialize the tree from the serialized version in the string
- * 'ser'. The serialized version is obtained by calling to_string()
- * TODO: implement this */
-void from_string(char *ser);
-
-/*
  * Merge two qdigests with q2 being the one that is merged into q1.
  * Therefore, q2 is declared constant since it should not be modified
  * */
@@ -436,6 +424,23 @@ void merge(struct QDigest *q1, const struct QDigest *q2) {
     }
     insert_node(tmp, n);
   }
-  compress_if_needed(tmp);
-  swap_q(q1, tmp);
+    compress_if_needed(tmp);
+    struct QDigest *old = tmp;
+    swap_q(q1, tmp);
+    delete_qdigest(old);
+    delete_queue(qu);
 }
+
+#ifdef TESTCORE
+
+int main(void) {
+  struct QDigest *q = create_tmp_q(20, 1);
+  delete_qdigest(q);
+sleep(2); // give time to open Instruments if needed
+    system("leaks $PPID"); // doesn't work correctly; better:
+    char cmd[64];
+    snprintf(cmd, sizeof(cmd), "leaks %d", getpid());
+    system(cmd);
+    return 0;
+}
+#endif

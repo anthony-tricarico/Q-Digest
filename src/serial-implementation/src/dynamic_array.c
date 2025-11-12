@@ -14,6 +14,10 @@ void push_back(Array *a, int value) {
   a->data[a->size++] = value;
 }
 
-void free_array(Array *a) { free(a->data); }
-
 size_t get_length(Array *a) { return a->size; }
+
+void free_array(Array *a) {
+    if (!a) return;
+    free(a->data);
+    free(a);
+}

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+#include <unistd.h>
 
 
 /* This is a helper function that is used by the qsort function */
@@ -89,6 +90,9 @@ void test_poisson_distribution(int n, int k, int seed) {
   for (double d = 0.05; d < 1.0; d += 0.05) {
     compare_percentiles(d, a, q);
   }
+    free_array(a);
+    free_array(b);
+    delete_qdigest(q);
 }
 
 void test_geometric_distribution(int n, int k, int seed) {
@@ -130,6 +134,9 @@ void test_geometric_distribution(int n, int k, int seed) {
   for (double d = 0.05; d < 1.0; d += 0.05) {
     compare_percentiles(d, a, q);
   }
+    free_array(a);
+    free_array(b);
+    delete_qdigest(q);
 }
 
 double compute_compression_ratio(struct QDigest *q) {
@@ -152,6 +159,8 @@ void test_random_distribution(int n, int k, int seed) {
   for (double d = 0.05; d < 1.0; d += 0.05) {
     compare_percentiles(d, a, q);
   }
+    free_array(a);
+    delete_qdigest(q);
 }
 
 void test_merge(int n, int k, int seed) {
@@ -178,7 +187,6 @@ void test_merge(int n, int k, int seed) {
          q1->num_nodes, compute_compression_ratio(q1), q2->num_nodes,
          compute_compression_ratio(q2));
 
-  printf("DEBUG: before merge\n");
   merge(q1, q2);
 
   printf("[combined] # elements: %lu\n[combined] Compression Ratio: %lf\n",
@@ -188,6 +196,9 @@ void test_merge(int n, int k, int seed) {
   for (double d = 0.05; d < 1.0; d += 0.05) {
     compare_percentiles(d, a, q1);
   }
+    free_array(a);
+    delete_qdigest(q1);
+    delete_qdigest(q2);
 }
 
 #ifdef TESTALL
@@ -201,6 +212,7 @@ int main(void) {
   test_geometric_distribution(N, K, seed);
   test_random_distribution(N, K, seed);
   test_merge(N, K, seed);
+    sleep(10);
   return 0;
 }
 #endif

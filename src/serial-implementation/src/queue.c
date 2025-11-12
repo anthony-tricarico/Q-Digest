@@ -62,8 +62,13 @@ Item pop(struct queue *q) {
   return ret;
 }
 
-// TODO: Tests have passed, just review this before completing the
-// implementation
+void delete_queue(struct queue *q) {
+  while (!is_empty(q)) {
+    pop(q);
+  }
+  free(q);
+}
+
 #ifdef TEST
 int main(void) {
   struct QDigestNode *qdn = xmalloc(sizeof(struct QDigestNode));

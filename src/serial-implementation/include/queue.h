@@ -44,4 +44,5 @@ Item front(struct queue *q);
 bool is_empty(struct queue *q);
 Item pop(struct queue *q);
 void push(struct queue *q, struct queueNode *n);
+void delete_queue(struct queue *q);
 #endif
