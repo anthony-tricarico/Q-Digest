@@ -4,7 +4,7 @@ vpath %.h include
 CC = mpicc
 CFLAGS = -I include
 TESTFLAGS = -I include -DTEST
-TESTALLFLAGS = -I include -DTESTALL -std=gnu99
+TESTALLFLAGS = -I include -DTESTALL -std=gnu99 -g -Wall
 
 BUILD_DIR = build
 EXEC_DIR = bin
@@ -45,3 +45,6 @@ clean:
 clean-files-cluster:
 	rm -rf *sh.*
 
+# NOTE: ONLY FOR LOCAL DEVELOPMENT, DO NOT USE ON CLUSTER
+run-local-test:
+	mpirun -n 1 $(EXEC_DIR)/test

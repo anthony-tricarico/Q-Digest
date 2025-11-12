@@ -95,7 +95,6 @@ void test_geometric_distribution(int n, int k, int seed) {
   printf("<< test_geometric_distribution >>\n");
   int number = 1;
   int repeat = 1;
-  bool flipped = false;
   Array *a = xmalloc(sizeof(Array)); // allocate memory for Array
   init_array(a, 128); // initialize the Array with an initial capacity
   for (; get_length(a) != n;
