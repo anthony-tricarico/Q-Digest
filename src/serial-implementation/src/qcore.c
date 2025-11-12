@@ -1,3 +1,7 @@
+/* The following program has been personally re-adapted from the following
+ * GitHub repo:
+ * https://github.com/dhruvbird/q-digest/tree/master/qdigest.h */
+
 #include "../include/qcore.h"
 #include "../include/memory_utils.h"
 #include "../include/queue.h"
@@ -105,7 +109,6 @@ size_t node_and_sibling_count(struct QDigestNode *n) {
  *
  * Returns 'true' or 'false' depending on whether it deleted the node n from the
  * tree.
- * TODO: check if memory allocation logic is correct
  * */
 bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level,
                            int l_max) {
@@ -183,7 +186,6 @@ void compress_if_needed(struct QDigest *q) {
   if (q->num_nodes >= (q->K * 6)) {
     const size_t nDivk = (q->N / q->K);
     const int l_max = log_2_ceil(q->root->upper_bound + 1);
-    // TODO: check if this is problematic in terms of modifying struct in place
     compress(q, q->root, 0, l_max, nDivk);
   }
 }
@@ -394,7 +396,6 @@ size_t percentile(struct QDigest *q, double p) {
   // p is in the range [0,1]
   size_t curr_rank = 0;
   const size_t req_rank = p * q->N;
-  // TODO: unsure about this way of implementing this
   return postorder_by_rank(q->root, &curr_rank, req_rank);
 }
 

@@ -109,3 +109,9 @@ Process 51965: 7 leaks for 336 total leaked bytes.
             CYCLE BACK TO 0x84d000000 [48]
             1 (48 bytes) ROOT CYCLE: 0x84d000060 [48]
 ```
+
+## Acknowledgments
+
+The current implementation uses portions of code that have been ported in C from a
+C++ implementation. The main repo that inspired the current work is available at:
+`https://github.com/dhruvbird/q-digest/tree/master`
