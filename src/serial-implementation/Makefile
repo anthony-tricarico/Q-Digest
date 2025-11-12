@@ -1,10 +1,10 @@
 vpath %.c src
 vpath %.h include
 
-CC = gcc
+CC = mpicc
 CFLAGS = -I include
 TESTFLAGS = -I include -DTEST
-TESTALLFLAGS = -I include -DTESTALL
+TESTALLFLAGS = -I include -DTESTALL -std=gnu99
 
 BUILD_DIR = build
 EXEC_DIR = bin
