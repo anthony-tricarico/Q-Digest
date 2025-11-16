@@ -9,8 +9,8 @@
  *
  */
 
-//#ifndef QCORE
-//#define QCORE
+#ifndef QCORE
+#define QCORE
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -119,4 +119,4 @@ char *preorder_to_string(struct QDigestNode *n, char *buf);
 void to_string(struct QDigest *q, char *buf);
 struct QDigest *from_string(char *buf);
 
-//#endif
+#endif
