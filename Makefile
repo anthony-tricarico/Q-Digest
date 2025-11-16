@@ -28,7 +28,7 @@ TEST_MAIN = tests/test_main.c
 TEST_OBJ = $(BUILD_DIR)/test_main.o
 TEST_BIN = $(BIN_DIR)/test
 
-.PHONY: all library mpi test clean help
+.PHONY: all library mpi test clean help docs
 
 all: library mpi test
 
@@ -84,6 +84,8 @@ clean:
 	@rm -rf $(BUILD_DIR) $(LIB_DIR) $(BIN_DIR)
 	@echo "✓ Cleaned build artifacts"
 
+docs:
+	doxygen Doxyfile
 help:
 	@echo "Q-Digest Build System"
 	@echo "===================="
@@ -91,5 +93,6 @@ help:
 	@echo "make mpi       - Build MPI implementation"
 	@echo "make test      - Build tests"
 	@echo "make all       - Build everything (library, mpi, test)"
+	@echo "make docs      - Builds documentation for the project"
 	@echo "make clean     - Remove build artifacts"
 	@echo "make help      - Show this help message"
