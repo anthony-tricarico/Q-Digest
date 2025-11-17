@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef TEST
+#ifdef TESTQUEUE
 #include "../include/qcore.h"
 #endif
 
@@ -69,7 +69,7 @@ void delete_queue(struct queue *q) {
   free(q);
 }
 
-#ifdef TEST
+#ifdef TESTQUEUE
 int main(void) {
   struct QDigestNode *qdn = xmalloc(sizeof(struct QDigestNode));
   struct QDigestNode *qdn1 = xmalloc(sizeof(struct QDigestNode));
