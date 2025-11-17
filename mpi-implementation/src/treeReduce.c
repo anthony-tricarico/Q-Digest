@@ -3,25 +3,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../include/qcore.h"
-#include "../include/allreduce.h"
-#include "../include/memory_utils.h"
+#include "../../include/qcore.h"
+#include "../include/treeReduce.h"
+#include "../../include/memory_utils.h"
 
 #define DEFAULT_STR_BUFFER_SIZE 128
 
 void Distribute_vector(
     int *sendbuf,
-    int scounts,
+    int local_n,
     int n,
     int rank,
     MPI_Comm comm
 )
 {
+    int local_buf[local_n];
     if (rank == 0) {
-        MPI_Scatter(sendbuf, scounts, MPI_INT, sendbuf, scounts,
+        MPI_Scatter(sendbuf, local_n, MPI_INT, local_buf, local_n,
             MPI_INT, 0, comm);
     } else {
-        MPI_Scatter(sendbuf, scounts, MPI_CHAR, sendbuf, scounts,
+        MPI_Scatter(NULL, local_n, MPI_CHAR, local_buf, local_n,
             MPI_CHAR, 0, comm);
     }
 }   /* Read_vector */
@@ -33,14 +34,7 @@ void TreeAllreduce(
     int rank,
     MPI_Comm comm)
 {   
-    int size = comm_size;
     
-    MPI_Status recv_status;
-    MPI_Request recv_req;
-    MPI_Datatype datatype = MPI_INT;
-    
-    // Compute tree depth complexity
-    int num_of_layers = (int)(log2(size));
     // Reduce the number of nodes/processes to a power of 2
     // If 10 processes we reduce to 8 = 2^(num_of_layers)
     int p = comm_size;
@@ -52,19 +46,16 @@ void TreeAllreduce(
     int new_rank;
 
     /* REDUCE */
-
-    // The new max_rank of processes/nodes is the == reduced_num-1.
-    // Thus, we need to send the orphan nodes data to the new subset
-    // of nodes, if there are any.
     if (orphans > 0) { // Check if there are any orphans.
-        // Oprhans are in the head, if orphans == 2, the orphans are rank = (0, 2)
-        // We couple them with rank = (1, 3)
-        // thus we evaluate (0,1,2,3) or rank < orphans*2
+        // Oprhans are in the head, if we have two orphans, 
+        // the orphans are odd process in region [0, 2*orphans]
+        // We couple them with pair process,
+        // thus we evaluate ([0,1],[2,3]) or rank < orphans*2
         if (rank < 2*orphans) { // if orphan, send to newly formed subset.
             if (rank % 2 != 0) {
                 char buf[DEFAULT_STR_BUFFER_SIZE]; 
-                size_t length = sizeof(buf)/sizeof(char);
-                to_string(q, buf); // to implement
+                size_t length = 0;
+                to_string(q, buf, &length); // to implement
                 MPI_Send(length, 1, MPI_UNSIGNED_LONG, rank-1, 0, comm);
                 MPI_Send(buf, length, MPI_CHAR, rank-1, 0, comm);
                 local_orphan_activity_flag = 0;
@@ -85,6 +76,15 @@ void TreeAllreduce(
             new_rank = rank - orphans;
         }
     }
+
+    if (!local_orphan_activity_flag) {
+        // These ranks do not partecipate to the tree phase;
+        //
+        return;
+    }
+
+    // Here we have p2 processes, 
+    // here we implement the tree reducing recursive doubling with the new_rank;
 
     return;
 }

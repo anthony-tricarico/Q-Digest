@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/allreduce.h"
+#include "../include/treeReduce.h"
 
 #define BUFFER_SIZE 1024
 #define LOWER_BOUND 0
@@ -30,8 +30,10 @@ int main(void)
     // Init the random number array of data
     initialize(rank, data, BUFFER_SIZE);
 
+    int local_n = BUFFER_SIZE/comm_sz;
+
     // Scatter the array around the nodes
-    Distribute_vector(data, BUFFER_SIZE, rank, MPI_COMM_WORLD);
+    Distribute_vector(data, local_n, rank, MPI_COMM_WORLD);
 
     // From the data buffer create the q-digest
     struct QDigest *q = from_buff_to_q(); // To DO;

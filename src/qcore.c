@@ -511,9 +511,11 @@ int main(void) {
     insert(q, 0, 2, true);
     char buf[100];
 
-    to_string(q, buf);
-    struct QDigest *q_copied = from_string(buf);
+    size_t length = 0;
 
+    to_string(q, buf, &length);
+    struct QDigest *q_copied = from_string(buf);
+    print("buff length %zu\n", length);
     printf("%s\n", buf);
     printf("%zu\n", q->num_inserts);
     printf("%zu\n", q_copied->num_inserts);
