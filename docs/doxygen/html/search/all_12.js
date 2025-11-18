@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['test_2ec_0',['test.c',['../test_8c.html',1,'']]],
+  ['test_5fcompress_1',['test_compress',['../test__qcore_8c.html#acd1dfe76806f02c51c5c475816dd5573',1,'test_qcore.c']]],
+  ['test_5fexpand_5ftree_2',['test_expand_tree',['../test__qcore_8c.html#adde6a8b5684a999069a0983a85277f5f',1,'test_qcore.c']]],
+  ['test_5fgeometric_5fdistribution_3',['test_geometric_distribution',['../test_8c.html#a541dd4999dcbde00e682c63f9da6b444',1,'test.c']]],
+  ['test_5finsert_5fand_5fpercentile_4',['test_insert_and_percentile',['../test__qcore_8c.html#a70a101e337609ec3c955ccf94cbc4753',1,'test_qcore.c']]],
+  ['test_5finsert_5fnode_5fand_5ftraversal_5',['test_insert_node_and_traversal',['../test__qcore_8c.html#aade9bbd7a0437b31457c449f44b7df6a',1,'test_qcore.c']]],
+  ['test_5flog_5f2_5fceil_6',['test_log_2_ceil',['../test__qcore_8c.html#accb52ba34c7850ca094352d3aefb2edd',1,'test_qcore.c']]],
+  ['test_5fmerge_7',['test_merge',['../test_8c.html#a3da938dd9ba8cbe601e460c0eaeb5b71',1,'test_merge(int n, int k, int seed):&#160;test.c'],['../test__qcore_8c.html#a4c5300cb32fa371e18f7f719bd4a0b6f',1,'test_merge(void):&#160;test_qcore.c']]],
+  ['test_5fnode_5fcreate_5fdelete_8',['test_node_create_delete',['../test__qcore_8c.html#a1ea36c4c3d9742e2c73caf5d284df2ec',1,'test_qcore.c']]],
+  ['test_5fpoisson_5fdistribution_9',['test_poisson_distribution',['../test_8c.html#ab80f7ac8c5a4415a19d4d7f796532163',1,'test.c']]],
+  ['test_5fqcore_2ec_10',['test_qcore.c',['../test__qcore_8c.html',1,'']]],
+  ['test_5fqdigest_5fcreate_5fdelete_11',['test_qdigest_create_delete',['../test__qcore_8c.html#a238f243e1e4963522db4d66cfc6a3a60',1,'test_qcore.c']]],
+  ['test_5frandom_5fdistribution_12',['test_random_distribution',['../test_8c.html#a076396707d3b2abff39dcf719e936ced',1,'test.c']]],
+  ['test_5fserialization_13',['test_serialization',['../test__qcore_8c.html#aba0c0dc58258aa49d61280a499042ad1',1,'test_qcore.c']]],
+  ['test_5fswap_5fq_14',['test_swap_q',['../test__qcore_8c.html#aa634058f5005e62e110a4cefd98f683b',1,'test_qcore.c']]],
+  ['testing_15',['Instructions for testing',['../md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html',1,'']]],
+  ['testing_20on_20qcore_16',['Results of testing on QCore',['../md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html#autotoc_md16',1,'']]],
+  ['the_20project_17',['Building the project',['../md__r_e_a_d_m_e.html#autotoc_md13',1,'']]],
+  ['the_20serial_20implementation_18',['Pseudocode for the serial implementation',['../md_docs_2serial__pseudocode.html',1,'']]],
+  ['to_5fstring_19',['to_string',['../qcore_8h.html#aacccef5e606069cbf18e500d337268aa',1,'to_string(struct QDigest *q, char *buf, size_t *buf_length):&#160;qcore.c'],['../qcore_8c.html#a7a79f3bb4cc255b3e9bb54710d805d2d',1,'to_string(struct QDigest *q, char *buf, size_t *length):&#160;qcore.c']]],
+  ['todo_20',['TODO',['../dir_cb97de7279c00998c4e56b74fc9b6627.html#autotoc_md11',1,'']]],
+  ['treeallreduce_21',['TreeAllreduce',['../tree_reduce_8h.html#a6f5df90fcdc74317d5cdfaa4ee17c825',1,'TreeAllreduce(size_t *data, size_t length, int comm_size, int rank):&#160;treeReduce.h'],['../tree_reduce_8c.html#ad4c6cbd8f25cc38bbd910eb1c32d92f2',1,'TreeAllreduce(struct QDigest *q, int comm_size, int rank, MPI_Comm comm):&#160;treeReduce.c']]],
+  ['treereduce_2ec_22',['treeReduce.c',['../tree_reduce_8c.html',1,'']]],
+  ['treereduce_2eh_23',['treeReduce.h',['../tree_reduce_8h.html',1,'']]],
+  ['treereduce_5ftest_2ec_24',['treeReduce_test.c',['../tree_reduce__test_8c.html',1,'']]]
+];
