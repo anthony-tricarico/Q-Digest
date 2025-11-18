@@ -173,7 +173,19 @@ void tree_reduce(
      *        After this step rank 0 holds the merged digest.
      */
 
-    int levels = (int)log2(tree_size);
+
+    /* Work in progress */
+    // Below a more secure way to compute levels, for now I keep this one
+    // as I've written it personally, later I'll try to understand the second, more robust way to compute levels.
+    // int levels = 0;
+    // int tmp = tree_size;
+    // while (tmp > 1)
+    // {
+    //     tmp >>= 1;
+    //     levels++;
+    // }
+    /* Work in progress */
+    int levels = (int)log2(tree_size); 
     for (int k = 0; k < levels; k++) {
         int step_size = 1 << k; // 2 ^ k
         if (tree_rank % (2 * step_size)) { // if current process is a sender (or odd ONLY for the first level)
@@ -184,17 +196,18 @@ void tree_reduce(
             size_t length = 0; // This is currently not used, just want to see if size work as well before removing
             to_string(q, buf, &length);
             int receiver = tree_rank - step_size;
-            MPI_Send(&size, 1, MPI_UNSIGNED_LONG, receiver, 0, comm);
-            MPI_Send(buf, size, MPI_CHAR, receiver, 0, comm);
+            MPI_Send(&size, 1, MPI_UNSIGNED_LONG, receiver, 0, tree_comm);
+            MPI_Send(buf, size, MPI_CHAR, receiver, 0, tree_comm);
             free(buf);
+            break;
         } else {
             /* receiver branch */
             int sender = tree_rank + step_size;
             size_t recv_size;
-            MPI_Recv(&recv_size, 1, MPI_UNSIGNED_LONG, sender, 0, comm,
+            MPI_Recv(&recv_size, 1, MPI_UNSIGNED_LONG, sender, 0, tree_comm,
                 MPI_STATUS_IGNORE);
             char *buf = xmalloc(recv_size);
-            MPI_Recv(buf, recv_size, MPI_CHAR, sender, 0, comm,
+            MPI_Recv(buf, recv_size, MPI_CHAR, sender, 0, tree_comm,
                 MPI_STATUS_IGNORE);
             struct QDigest *tmp = from_string(buf);
             merge(q, tmp);
