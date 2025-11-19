@@ -110,8 +110,7 @@ size_t node_and_sibling_count(struct QDigestNode *n) {
  * Returns 'true' or 'false' depending on whether it deleted the node n from the
  * tree.
  * */
-bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level,
-                           int l_max) {
+bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level, int l_max) {
     if (n->count == 0 && (!n->left && !n->right)) {
         if (n->parent) {
             if (n->parent->left == n) {
@@ -128,8 +127,7 @@ bool delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level,
     return false;
 }
 
-void compress(struct QDigest *q, struct QDigestNode *n, int level, int l_max,
-              size_t nDivk) {
+void compress(struct QDigest *q, struct QDigestNode *n, int level, int l_max, size_t nDivk) {
     if (!n)
         return;
 
