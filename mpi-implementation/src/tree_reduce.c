@@ -36,7 +36,7 @@ struct QDigest *_build_q_from_vector(int *a, int size, size_t upper_bound) {
      * due to the fact that when using an upper bound that is much
      * smaller than the actual received number the q-digest might
      * overflow internal nodes, causing a strange ranges in serialization. */
-    struct QDigest *q = create_tmp_q(5, upper_bound-1);
+    struct QDigest *q = create_tmp_q(5, upper_bound);
     for (int i = 0; i < size; i++) {
         insert(q, a[i], 1, true);
     }

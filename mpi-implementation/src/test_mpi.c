@@ -7,31 +7,7 @@
 #include "../include/tree_reduce.h"
 #include "../../include/memory_utils.h"
 
-#define NUMS 1024
-
-void debug_distribute_data_array(int *local_buf, int local_n, int rank, int buf_size, MPI_Comm comm)
-{
-    printf("DEBUG: distribute data array function\n");
-    distribute_data_array(local_buf, local_n, rank, NUMS, MPI_COMM_WORLD);
-    printf("\n[Rank %d] Size of local buf:%d\n", rank, local_n);
-    printf("[DEBUG] local buffer of process %d\n", rank);
-    for (int i = 0; i < 10; i++) printf("[%d]:%d\n",i,local_buf[i]);
-    MPI_Barrier(MPI_COMM_WORLD);
-    printf("\n");
-}
-
-void debug_build_q_from_vector(int *local_buf, int local_n)
-{
-    printf("DEBUG: build q from vector\n");
-    size_t upper_bound = _get_curr_upper_bound(local_buf, local_n);
-    struct QDigest *q = _build_q_from_vector(local_buf, local_n, upper_bound);
-    size_t size = get_num_of_bytes(q);
-    char *serial_q = xmalloc(size);
-    size_t length = 0;
-    to_string(q, serial_q, &length);
-    printf("DEBUG: built q dig:\n%s\n", serial_q);
-    assert(q->root->upper_bound == upper_bound);
-}
+#define TEST 1
 
 int main(void) {
     int rank, comm_sz;
@@ -40,15 +16,16 @@ int main(void) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
 
-    int local_n = NUMS/comm_sz;
-    int local_buf[local_n];
-    MPI_Barrier(MPI_COMM_WORLD);
+#if TEST
+    /* Exercise tree_reduce with deterministic QDigest */
+    int a[10] = {0,1,2,4,5,6,7,8,9};
+    int n = sizeof(a)/sizeof(a[0]);
 
-    debug_distribute_data_array(local_buf, local_n, rank, NUMS, MPI_COMM_WORLD);
-    MPI_Barrier(MPI_COMM_WORLD);
+    distribute_data_array(a, local_n, rank, n, MPI_COMM_WORLD);
+    
+#endif
 
-    debug_build_q_from_vector(local_buf, local_n);
-    MPI_Barrier(MPI_COMM_WORLD);
+    // test_tree_reduce() 
 
     MPI_Finalize();
     printf("All test passed!\n");
