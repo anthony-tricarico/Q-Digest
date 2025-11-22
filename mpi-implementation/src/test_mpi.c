@@ -10,8 +10,8 @@
  * favor of proper user-based I/O */
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
-#define DATA_SIZE 1024
-#define K 1
+#define DATA_SIZE 10
+#define K 5
 
 /* ============== MAIN FUNCTION ======================== */
 int main(void) 
@@ -56,14 +56,14 @@ int main(void)
         printf("[rank %d] starting data distribution\n", rank);
 
         distribute_data_array(
-            arr, 
+            NULL, 
             local_buf,
             counts,
             displs,
             local_n,
             rank,
             DATA_SIZE,
-            true,
+            false,
             MPI_COMM_WORLD
         );
     } else {
@@ -75,7 +75,7 @@ int main(void)
             local_n,
             rank,
             DATA_SIZE,
-            true,
+            false,
             MPI_COMM_WORLD
         );
  

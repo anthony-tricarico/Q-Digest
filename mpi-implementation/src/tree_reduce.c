@@ -205,6 +205,7 @@ void tree_reduce(
         }
     }
     
+    printf("DEBUG: completed tree reduce\n");
     MPI_Comm_free(&tree_comm);
     return;
 } /* tree_reduce */
