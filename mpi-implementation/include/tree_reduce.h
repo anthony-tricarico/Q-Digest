@@ -39,7 +39,7 @@ void initialize_data_array(int rank, int *data, int n);
  *
  *  For convenience (especially during testing), the function can receive a source buffer.
  *  This allows the function to be used in test scenarios with buffer prepared in advance,
- *  or to easly switch to fully generated random buffer at pleasure. 
+ *  or to easily switch to fully generated random buffer at pleasure. 
  *  After scattering, the eventual temporary buffer is freed.
  *
  *  This dual-branch logic makes the function flexible for both production and testing use cases.
