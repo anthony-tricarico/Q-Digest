@@ -2,7 +2,6 @@
 # Q-Digest Build System
 # =======================
 
-
 CC = mpicc
 AR = ar
 CFLAGS = -I include -Wall -std=c99 -g
@@ -18,7 +17,7 @@ LIB_DIR = lib
 BIN_DIR = bin
 
 # Core library sources (NO src/ prefix - just filenames)
-CORE_SOURCES = qcore.c queue.c memory_utils.c dynamic_array.c
+CORE_SOURCES = qcore.c queue.c memory_utils.c dynamic_array.c test_utils.c
 CORE_OBJECTS = $(patsubst %.c,$(BUILD_DIR)/%.o,$(CORE_SOURCES))
 LIB_NAME = libqdigest.a
 LIB_PATH = $(LIB_DIR)/$(LIB_NAME)

@@ -378,6 +378,10 @@ size_t postorder_by_rank(struct QDigestNode *n, size_t *curr_rank,
  * */
 size_t percentile(struct QDigest *q, double p) {
     // p is in the range [0,1]
+    if (p < 0 || p > 1) {
+        fprintf(stderr, "ERROR: insert a valid value for p (between 0 and 1, inclusive)");
+        exit(EXIT_FAILURE);
+    }
     size_t curr_rank = 0;
     const size_t req_rank = p * q->N;
     return postorder_by_rank(q->root, &curr_rank, req_rank);
