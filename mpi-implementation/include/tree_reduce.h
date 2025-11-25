@@ -39,7 +39,7 @@ void initialize_data_array(int rank, int *data, int n);
  *
  *  For convenience (especially during testing), the function can receive a source buffer.
  *  This allows the function to be used in test scenarios with buffer prepared in advance,
- *  or to easly switch to fully generated random buffer at pleasure. 
+ *  or to easily switch to fully generated random buffer at pleasure. 
  *  After scattering, the eventual temporary buffer is freed.
  *
  *  This dual-branch logic makes the function flexible for both production and testing use cases.
@@ -95,7 +95,7 @@ size_t _get_curr_upper_bound(int *buf, int n);
  *
  *  @return Newly allocated QDigest containing all values from @p a.
  */
-struct QDigest *_build_q_from_vector(int *a, int size, size_t upper_bound);
+struct QDigest *_build_q_from_vector(int *a, int size, size_t upper_bound, int k);
 
 
 /* ============== PARALLE Q-DIGEST FUNCTION =============== */

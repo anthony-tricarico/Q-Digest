@@ -9,7 +9,8 @@ EXEC = $(EXEC_DIR)/main
 # Sources
 MPI_SRCS = src/main.c src/tree_reduce.c
 COMMON_SRCS = ../src/qcore.c ../src/memory_utils.c ../src/dynamic_array.c ../src/queue.c
-TEST_SRCS = src/test_mpi.c src/tree_reduce.c
+# TEST_SRCS = src/test_mpi.c src/tree_reduce.c
+TEST_SRCS = src/test_review.c src/tree_reduce.c
 
 MPI_OBJS = $(patsubst src/%.c,$(BUILD_DIR)/mpi_%.o,$(MPI_SRCS))
 COMMON_OBJS = $(patsubst ../src/%.c,$(BUILD_DIR)/common_%.o,$(COMMON_SRCS))

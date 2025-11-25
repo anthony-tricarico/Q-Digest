@@ -4,12 +4,15 @@
 #include <stdlib.h>
 #include "../include/tree_reduce.h"
 #include "../../include/memory_utils.h"
+#include "../../include/qcore.h"
+
 
 /* NOTE: These are test parameters and should be removed in 
  * favor of proper user-based I/O */
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
-#define DATA_SIZE 1024
+#define DATA_SIZE 10
+#define K 5
 
 /* ============== MAIN FUNCTION ======================== */
 int main(void) 
@@ -42,11 +45,22 @@ int main(void)
     int local_n = counts[rank];
     int *local_buf = xmalloc(local_n*sizeof(int));
 
-    /* Scatter the array around the nodes */ 
+    /* This is initializing the array, technically only rank 0
+     * should initialize the array and scatter it around */
+    
+    int *buf = xmalloc(DATA_SIZE*sizeof(int));
     if (rank == 0) {
-        printf("[rank %d] starting data distribution\n", rank);
+        for (int i = 0; i < DATA_SIZE; i++) {
+            buf[i] = i;
+        }
     }
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING
+
+    // printf("DEBUG: Before barrier\n");
+    /* Synchronizes all processes to wait for the buf to
+     * be scattered to be populated by process 0 */
+    // MPI_Barrier(MPI_COMM_WORLD);
+
+    /* Scatter the array around the nodes */ 
     distribute_data_array(
         NULL, 
         local_buf,
@@ -55,24 +69,27 @@ int main(void)
         local_n,
         rank,
         DATA_SIZE,
-        0,
+        false,
         MPI_COMM_WORLD
     );
-    printf("[rank %d] finished scatter, building local digest\n", rank);
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
+
+    printf("DEBUG: rank %d Distribution is ok\n", rank);
 
     // From the data buffer create the q-digest
     size_t upper_bound = _get_curr_upper_bound(local_buf, local_n);
-    struct QDigest *q = _build_q_from_vector(local_buf, local_n, upper_bound, 5);
-    printf("[rank %d] built q-digest, starting tree_reduce\n", rank);
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
+    struct QDigest *q = _build_q_from_vector(local_buf, local_n, upper_bound, K);
+
+    printf("DEBUG: q-digest build in rank %d succeded\n", rank);
 
     // data get inserted into qdigest and then compressed, ecc...
     tree_reduce(q, comm_sz, rank, MPI_COMM_WORLD);
-    printf("[rank %d] tree_reduce completed\n", rank);
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
+    printf("DEBUG: tree reduce in rank %d completed\n", rank);
+
+    if (rank == 0) {
+        size_t res = percentile(q, 0.5);
+        printf("result is %lu\n", res);
+    }
 
     MPI_Finalize();
-    printf("Apparenly alla worked fine!\n"); // DEBUGGING 
     return 0;
 }
