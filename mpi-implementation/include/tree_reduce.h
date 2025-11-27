@@ -12,37 +12,31 @@
  *
  *  Seeds the C RNG with @p rank so every process chosen for the generation
  *  (default case is rank 0 process) creates a reproducible sequence, then 
- *  writes @p n values between the current LOWER_BOUND and UPPER_BOUND macros
+ *  writes @p n values between the given @lb and @ub (lower bound and upper bound)
  *  (inclusive) into @p data.
  *
  *  @param rank Calling process rank; used both for RNG seeding and to decorrelate buffers.
  *  @param data Pointer to the buffer that will receive @p n integers.
  *  @param n Number of elements to generate.
+ *  @param lb lower bound of data.
+ *  @param up upper bound of data.
  *
- *  @note The value range is presently fixed via compile-time macros
- *        (LOWER_BOUND/UPPER_BOUND); when we introduce configurable workloads
- *        these literals will be replaced by parameters to the helper.
  */
-void initialize_data_array(int rank, int *data, int n);
+void initialize_data_array(int rank, int *data, int n, size_t lb, size_t ub);
 
 /**
  *  @brief Scatter variable-sized segments across ranks using MPI_Scatterv.
  *
- *  On rank 0, either scatters the provided @p src_values using the supplied
- *  @p counts and @p displs arrays, or if @p use_src is false or @p src_values is NULL
- *  first synthesizes @p buf_size integers via `_initialize_data_array()` and scatters those.
- *  The user should provide @p src_values as NULL if no source buffer is available,
- *  so that one can be generated accordingly.
+ *  Distributes variable-sized segments of an integer array across ranks using MPI_Scatterv.
  *
- *  Non-root ranks always receive @p local_n integers into @p local_buf.
- *  The routine wraps `MPI_Scatterv()` and returns the receive buffer for convenience.
+ *  The caller is responsible for providing the source data array (@p src_values) on rank 0,
+ *  as well as the counts and displacements arrays. The function simply scatters the data
+ *  using MPI_Scatterv, and each rank receives @p local_n integers into @p local_buf.
  *
- *  For convenience (especially during testing), the function can receive a source buffer.
- *  This allows the function to be used in test scenarios with buffer prepared in advance,
- *  or to easily switch to fully generated random buffer at pleasure. 
- *  After scattering, the eventual temporary buffer is freed.
+ *  This function does not generate or allocate the source buffer; it only performs the scatter.
+ *  The caller must ensure that @p src_values is valid and populated on rank 0.
  *
- *  This dual-branch logic makes the function flexible for both production and testing use cases.
+ *  After scattering, the receive buffer (@p local_buf) is returned for convenience.
  *
  *  @param src_values source buffer on rank 0; ignored on other ranks. 
  *                    This should be set to NULL if the caller does not intend 
@@ -53,7 +47,6 @@ void initialize_data_array(int rank, int *data, int n);
  *  @param local_n Number of integers expected locally (recvcount).
  *  @param rank Rank of the calling process.
  *  @param buf_size Total number of integers available on rank 0. Used when @p use_src is false.
- *  @param use_src If true and @p src_values is non-NULL, scatter te buffer instead of synthesizing data.
  *  @param comm Communicator used for the scatter.
  *
  *  @return @p local_buf for chaining.
@@ -66,7 +59,6 @@ int *distribute_data_array(
     int local_n,
     int rank, 
     int buf_size,
-    bool use_src,
     MPI_Comm comm
 );
 

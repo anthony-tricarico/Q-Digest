@@ -13,6 +13,7 @@
 #include <string.h>
 #include <unistd.h>
 
+
 /* This function is used to compute the base-2 logarithm of a given input n */
 size_t log_2_ceil(size_t n) {
     /* Check if the given n is already a power of 2 with bitwise operations */

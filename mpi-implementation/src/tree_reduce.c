@@ -7,17 +7,19 @@
 #include "../include/tree_reduce.h"
 #include "../../include/memory_utils.h"
 
-#define LOWER_BOUND 0
-#define UPPER_BOUND 10
-
 #define MAX(a, b) ((a) > (b) ? (a) : (b));
 
-void _initialize_data_array(int rank, int *data, int n)
+void initialize_data_array(
+    int rank,
+    int *data,
+    int n,
+    size_t lb,
+    size_t ub)
 {
     int i;
     srand(rank);
     for (i = 0; i < n; i++) 
-        data[i] = LOWER_BOUND + rand() % (UPPER_BOUND-LOWER_BOUND + 1);
+        data[i] = lb + rand() % (ub-lb + 1);
     return;
 }
 
@@ -50,42 +52,24 @@ int *distribute_data_array(
     int local_n,
     int rank, 
     int buf_size,
-    bool use_src,
     MPI_Comm comm
 )
 {
     if (rank == 0)
     {
-        // If the caller provides a source buffer and requests its use, scatter from that buffer.
-        if (src_values && use_src) {
-            MPI_Scatterv(
-                src_values,   // sendbuf (root routine)
-                counts,     
-                displs,     
-                MPI_INT,
-                local_buf,  
-                local_n,    
-                MPI_INT,
-                0,          // root
-                comm
-            );
-        } else {
-            // For convenience in testing, allocate and initialize a temporary buffer internally.
-            int *buf = xmalloc(buf_size*sizeof(int));
-            _initialize_data_array(rank, buf, buf_size);
-            MPI_Scatterv(
-                buf,   // sendbuf (root routine)
-                counts,     
-                displs,     
-                MPI_INT,
-                local_buf,  
-                local_n,    
-                MPI_INT,
-                0,          // root
-                comm
-            );
-            free(buf);
-        }
+        if (src_values == NULL)
+            printf("ERROR: provided pointer to the rank 0's buffer must be not NULL");
+        MPI_Scatterv(
+            src_values,   // sendbuf (root routine)
+            counts,     
+            displs,     
+            MPI_INT,
+            local_buf,  
+            local_n,    
+            MPI_INT,
+            0,          // root
+            comm
+        );
     } else {
         MPI_Scatterv(
             NULL,   // recvbuff (root routine)

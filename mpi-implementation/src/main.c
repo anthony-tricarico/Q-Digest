@@ -10,6 +10,9 @@
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
 #define DATA_SIZE 1024
+#define LOWER_BOUND 0
+#define UPPER_BOUND 10
+#define K 5
 
 /* ============== MAIN FUNCTION ======================== */
 int main(void) 
@@ -47,23 +50,38 @@ int main(void)
         printf("[rank %d] starting data distribution\n", rank);
     }
     MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING
+    /* This is initializing the array, technically only rank 0
+     * should initialize the array and scatter it around */
+    
+    int *buf = xmalloc(DATA_SIZE*sizeof(int));
+    if (rank == 0) {
+        initialize_data_array(rank, buf, DATA_SIZE, LOWER_BOUND, UPPER_BOUND);
+    }
     distribute_data_array(
-        NULL, 
+        buf, 
         local_buf,
         counts,
         displs,
         local_n,
         rank,
         DATA_SIZE,
-        0,
         MPI_COMM_WORLD
     );
     printf("[rank %d] finished scatter, building local digest\n", rank);
     MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
 
     // From the data buffer create the q-digest
-    size_t upper_bound = _get_curr_upper_bound(local_buf, local_n);
-    struct QDigest *q = _build_q_from_vector(local_buf, local_n, upper_bound, 5);
+    size_t local_upper_bound = _get_curr_upper_bound(local_buf, local_n);
+    size_t global_upper_bound;
+    MPI_Allreduce(
+        &local_upper_bound,
+        &global_upper_bound,
+        1,
+        MPI_UNSIGNED_LONG,
+        MPI_MAX,
+        MPI_COMM_WORLD
+    );
+    struct QDigest *q = _build_q_from_vector(local_buf, local_n, global_upper_bound, K);
     printf("[rank %d] built q-digest, starting tree_reduce\n", rank);
     MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
 

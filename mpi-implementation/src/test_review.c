@@ -6,13 +6,14 @@
 #include "../../include/memory_utils.h"
 #include "../../include/qcore.h"
 
-
 /* NOTE: These are test parameters and should be removed in 
  * favor of proper user-based I/O */
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
 #define DATA_SIZE 10
 #define K 5
+#define LOWER_BOUND 0
+#define UPPER_BOUND 20
 
 /* ============== MAIN FUNCTION ======================== */
 int main(void) 
@@ -50,9 +51,7 @@ int main(void)
     
     int *buf = xmalloc(DATA_SIZE*sizeof(int));
     if (rank == 0) {
-        for (int i = 0; i < DATA_SIZE; i++) {
-            buf[i] = i;
-        }
+        initialize_data_array(rank, buf, DATA_SIZE, LOWER_BOUND, UPPER_BOUND);
     }
 
     // printf("DEBUG: Before barrier\n");
@@ -62,22 +61,33 @@ int main(void)
 
     /* Scatter the array around the nodes */ 
     distribute_data_array(
-        NULL, 
+        buf, 
         local_buf,
         counts,
         displs,
         local_n,
         rank,
         DATA_SIZE,
-        false,
         MPI_COMM_WORLD
     );
 
     printf("DEBUG: rank %d Distribution is ok\n", rank);
 
     // From the data buffer create the q-digest
-    size_t upper_bound = _get_curr_upper_bound(local_buf, local_n);
-    struct QDigest *q = _build_q_from_vector(local_buf, local_n, upper_bound, K);
+    size_t local_upper_bound = _get_curr_upper_bound(local_buf, local_n);
+    size_t global_upper_bound;
+    MPI_Allreduce(
+        &local_upper_bound,
+        &global_upper_bound,
+        1,
+        MPI_UNSIGNED_LONG,
+        MPI_MAX,
+        MPI_COMM_WORLD
+    );
+    printf("CRITICAL: rank %d and upper bound is %zu\n", rank, global_upper_bound);
+    // This function is here to simulate the computational cost required to find the current upper bound in the data, since in 
+    // an actual implementation and execution we don't know a priori the real upper bound in the data. 
+    struct QDigest *q = _build_q_from_vector(local_buf, local_n, global_upper_bound, K);
 
     printf("DEBUG: q-digest build in rank %d succeded\n", rank);
 

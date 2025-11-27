@@ -37,7 +37,7 @@ $(TEST_EXEC): $(TEST_OBJS) $(COMMON_OBJS) | $(EXEC_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 run-local-test: $(TEST_EXEC)
-	mpirun -n 1 $(TEST_EXEC)
+	mpirun -n 10 $(TEST_EXEC)
 
 # test-mpi-debug: CFLAGS := $(CFLAGS_DEBUG)
 # test-mpi-debug: clean $(TEST_DEBUG_EXEC)
