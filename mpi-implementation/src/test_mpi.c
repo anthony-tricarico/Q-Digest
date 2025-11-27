@@ -1,17 +1,18 @@
 #include <mpi.h>
-#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "../include/tree_reduce.h"
 #include "../../include/memory_utils.h"
+#include "../../include/qcore.h"
 
 /* NOTE: These are test parameters and should be removed in 
  * favor of proper user-based I/O */
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
-#define DATA_SIZE 1024
+#define DATA_SIZE 10
 #define LOWER_BOUND 0
-#define UPPER_BOUND 10
+#define UPPER_BOUND 5
 #define K 5
 
 /* ============== MAIN FUNCTION ======================== */
@@ -24,11 +25,11 @@ int main(void)
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
 
     /* Handling possible rest division in n/comm_sz */
-    int base = DATA_SIZE/comm_sz;
+    int base = DATA_SIZE / comm_sz;
     int rest = DATA_SIZE % comm_sz;
 
     /* Filling counts and displacements arrys with counts of 
-    how many integers each nodes will receive and with offesets
+    how many integers each nodes will receive and with offsets
     describing how to scatter the original array into the 
     different processes. */
     int *counts = xmalloc(comm_sz*sizeof(int));
@@ -46,16 +47,13 @@ int main(void)
     int *local_buf = xmalloc(local_n*sizeof(int));
 
     /* Scatter the array around the nodes */ 
-    if (rank == 0) {
-        printf("[rank %d] starting data distribution\n", rank);
-    }
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING
-    /* This is initializing the array, technically only rank 0
-     * should initialize the array and scatter it around */
-    
     int *buf = xmalloc(DATA_SIZE*sizeof(int));
     if (rank == 0) {
-        initialize_data_array(rank, buf, DATA_SIZE, LOWER_BOUND, UPPER_BOUND);
+        for (int i = 0; i < DATA_SIZE; i++)
+            buf[i] = i;
+        printf("The last number in the array is %d\n",
+                buf[DATA_SIZE-1]);
+        printf("[rank %d] starting data distribution\n", rank);
     }
     distribute_data_array(
         buf, 
@@ -67,8 +65,8 @@ int main(void)
         DATA_SIZE,
         MPI_COMM_WORLD
     );
+
     printf("[rank %d] finished scatter, building local digest\n", rank);
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
 
     // From the data buffer create the q-digest
     size_t local_upper_bound = _get_curr_upper_bound(local_buf, local_n);
@@ -81,16 +79,49 @@ int main(void)
         MPI_MAX,
         MPI_COMM_WORLD
     );
-    struct QDigest *q = _build_q_from_vector(local_buf, local_n, global_upper_bound, K);
+    struct QDigest *q = _build_q_from_vector(
+        local_buf, 
+        local_n, 
+        global_upper_bound,
+        K
+    );
     printf("[rank %d] built q-digest, starting tree_reduce\n", rank);
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
 
+    // printf("Process %d received buffer of size %zu bytes\n",
+    //        rank, sizeof(*local_buf));
+    
+    printf("Process %d: first element contained in array: %d\n",
+           rank, local_buf[0]);
+
+    printf("The root of the tree built in rank %d has upper_bound: %zu\n",
+           rank, q->root->upper_bound);
+    
+    MPI_Barrier(MPI_COMM_WORLD);
     // data get inserted into qdigest and then compressed, ecc...
     tree_reduce(q, comm_sz, rank, MPI_COMM_WORLD);
+
     printf("[rank %d] tree_reduce completed\n", rank);
-    MPI_Barrier(MPI_COMM_WORLD); // DEBUGGING 
+
+# define TEST
+# ifdef TEST
+    /* ============== TESTS ============= */
+    // check if size of the communicator is as expected
+    if (rank == 0) {
+        size_t min = percentile(q, 0);
+        size_t max = percentile(q, 1);
+        size_t median = percentile(q, 0.5);
+        printf("median is %zu\n", median);
+        printf("max is %zu\n", max);
+        printf("min is %zu\n", min);
+
+        // // test suite works only for array declared above
+        // assert(min == 0);
+        // assert(max == DATA_SIZE-1);
+        // assert(median == 5);
+    }
+#endif
 
     MPI_Finalize();
-    printf("Apparenly alla worked fine!\n"); // DEBUGGING 
+    // printf("Apparently all worked fine!\n"); // DEBUGGING 
     return 0;
 }
