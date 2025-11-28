@@ -13,7 +13,7 @@
 #define DATA_SIZE 10
 #define LOWER_BOUND 0
 #define UPPER_BOUND 5
-#define K 5
+#define K 1
 
 /* ============== MAIN FUNCTION ======================== */
 int main(void) 
@@ -51,9 +51,9 @@ int main(void)
     if (rank == 0) {
         for (int i = 0; i < DATA_SIZE; i++)
             buf[i] = i;
-        printf("The last number in the array is %d\n",
+        // printf("The last number in the array is %d\n",
                 buf[DATA_SIZE-1]);
-        printf("[rank %d] starting data distribution\n", rank);
+        // printf("[rank %d] starting data distribution\n", rank);
     }
     distribute_data_array(
         buf, 
@@ -66,7 +66,7 @@ int main(void)
         MPI_COMM_WORLD
     );
 
-    printf("[rank %d] finished scatter, building local digest\n", rank);
+    // printf("[rank %d] finished scatter, building local digest\n", rank);
 
     // From the data buffer create the q-digest
     size_t local_upper_bound = _get_curr_upper_bound(local_buf, local_n);
@@ -85,24 +85,24 @@ int main(void)
         global_upper_bound,
         K
     );
-    printf("[rank %d] built q-digest, starting tree_reduce\n", rank);
+    // printf("[rank %d] built q-digest, starting tree_reduce\n", rank);
 
     // printf("Process %d received buffer of size %zu bytes\n",
     //        rank, sizeof(*local_buf));
     
-    printf("Process %d: first element contained in array: %d\n",
-           rank, local_buf[0]);
+    // printf("Process %d: first element contained in array: %d\n",
+    //        rank, local_buf[0]);
+    //
+    // printf("The root of the tree built in rank %d has upper_bound: %zu\n",
+    //        rank, q->root->upper_bound);
+    //
 
-    printf("The root of the tree built in rank %d has upper_bound: %zu\n",
-           rank, q->root->upper_bound);
-    
     MPI_Barrier(MPI_COMM_WORLD);
     // data get inserted into qdigest and then compressed, ecc...
     tree_reduce(q, comm_sz, rank, MPI_COMM_WORLD);
 
-    printf("[rank %d] tree_reduce completed\n", rank);
+    // printf("[rank %d] tree_reduce completed\n", rank);
 
-# define TEST
 # ifdef TEST
     /* ============== TESTS ============= */
     // check if size of the communicator is as expected
@@ -114,9 +114,8 @@ int main(void)
         printf("max is %zu\n", max);
         printf("min is %zu\n", min);
 
-        // // test suite works only for array declared above
-        // assert(min == 0);
-        // assert(max == DATA_SIZE-1);
+        assert(min == 0);
+        assert(max == DATA_SIZE-1);
         // assert(median == 5);
     }
 #endif
