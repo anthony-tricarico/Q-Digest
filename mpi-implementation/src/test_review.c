@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "../include/tree_reduce.h"
 #include "../../include/memory_utils.h"
 #include "../../include/qcore.h"
@@ -10,11 +11,13 @@
  * favor of proper user-based I/O */
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
-#define DATA_SIZE 10
-#define K 5
+#define DATA_SIZE 300
+#define K 200   // higher values of K provide lesser compression but more accuracy
 #define LOWER_BOUND 0
 #define UPPER_BOUND 20
 
+
+int compute_median(int *buf, size_t size);
 /* ============== MAIN FUNCTION ======================== */
 int main(void) 
 {
@@ -51,7 +54,13 @@ int main(void)
     
     int *buf = xmalloc(DATA_SIZE*sizeof(int));
     if (rank == 0) {
+        #ifdef TEST
+        for (int i = 0; i < DATA_SIZE; i++) {
+            buf[i] = i;
+        }
+        #else
         initialize_data_array(rank, buf, DATA_SIZE, LOWER_BOUND, UPPER_BOUND);
+        #endif
     }
 
     // printf("DEBUG: Before barrier\n");
@@ -71,7 +80,7 @@ int main(void)
         MPI_COMM_WORLD
     );
 
-    printf("DEBUG: rank %d Distribution is ok\n", rank);
+    // printf("DEBUG: rank %d Distribution is ok\n", rank);
 
     // From the data buffer create the q-digest
     size_t local_upper_bound = _get_curr_upper_bound(local_buf, local_n);
@@ -84,22 +93,52 @@ int main(void)
         MPI_MAX,
         MPI_COMM_WORLD
     );
-    printf("CRITICAL: rank %d and upper bound is %zu\n", rank, global_upper_bound);
+    // printf("CRITICAL: rank %d and upper bound is %zu\n", rank, global_upper_bound);
     // This function is here to simulate the computational cost required to find the current upper bound in the data, since in 
     // an actual implementation and execution we don't know a priori the real upper bound in the data. 
     struct QDigest *q = _build_q_from_vector(local_buf, local_n, global_upper_bound, K);
 
-    printf("DEBUG: q-digest build in rank %d succeded\n", rank);
+    // printf("DEBUG: q-digest build in rank %d succeded\n", rank);
 
     // data get inserted into qdigest and then compressed, ecc...
     tree_reduce(q, comm_sz, rank, MPI_COMM_WORLD);
-    printf("DEBUG: tree reduce in rank %d completed\n", rank);
+    // printf("DEBUG: tree reduce in rank %d completed\n", rank);
 
+# ifdef TEST
+   /* ============== TESTS ============= */
+    // check if size of the communicator is as expected
     if (rank == 0) {
-        size_t res = percentile(q, 0.5);
-        printf("result is %lu\n", res);
+        size_t min = percentile(q, 0);
+        size_t max = percentile(q, 1);
+        size_t median = percentile(q, 0.5);
+        printf("max is %zu\n", max);
+        printf("min is %zu\n", min);
+
+        int actual_median = compute_median(buf, DATA_SIZE);
+        printf("median is %zu\n", median);
+        printf("actual median is %d\n", actual_median);
+        printf("q-digest is off by %d\n", abs(median-actual_median));
+        assert(min == 0);
+        assert(max == DATA_SIZE-1);
+        // assert(median == actual_median);
+        printf("SUCCESS: Assertion tests passed on deterministic array\n");
     }
+# endif
 
     MPI_Finalize();
     return 0;
+}
+
+/* compute median for deterministic array which 
+ * is already sorted! If the array is not sorted
+ * this function will not work. */
+int compute_median(int *buf, size_t size) {
+    int idx;
+    if (size % 2 == 0) { // even branch
+        idx = ceil((double)(size / 2));
+        return ceil((buf[idx]+buf[idx+1])/2);
+    } else {
+        idx = ceil((double)(size/2));
+        return buf[idx];
+    }
 }

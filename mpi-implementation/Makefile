@@ -1,5 +1,5 @@
 CC = mpicc
-CFLAGS = -Iinclude -I../include
+CFLAGS = -Iinclude -I../include -DTEST
 # CFLAGS_DEBUG = $(CFLAGS) -g -O0
 
 BUILD_DIR = build

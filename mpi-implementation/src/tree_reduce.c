@@ -104,7 +104,7 @@ void tree_reduce(
     // under baseline assumption that every process is not an orphan
     int is_orphan = 0;
     
-    printf("DEBUG: number of orphans is %d\n", orphans);
+    // printf("DEBUG: number of orphans is %d\n", orphans);
     /* REDUCE */
     
     /* === Trim of the communicator === */
@@ -130,13 +130,13 @@ void tree_reduce(
             MPI_Recv(buf, recv_size, MPI_CHAR, rank + 1, 0, comm,
                 MPI_STATUS_IGNORE);
             struct QDigest *tmp = from_string(buf);
-            printf("DEBUG: after creation of q digest from string.\n");
+            // printf("DEBUG: after creation of q digest from string.\n");
             merge(q, tmp);
-            printf("DEBUG: after merge.\n");
+            // printf("DEBUG: after merge.\n");
             delete_qdigest(tmp);
             free(buf);
-            printf("DEBUG: rank %d received from rank %d during orphan processes detection\n",
-                   rank, rank + 1);
+            // printf("DEBUG: rank %d received from rank %d during orphan processes detection\n",
+                   // rank, rank + 1);
 
         }
     }
@@ -151,9 +151,9 @@ void tree_reduce(
         is_orphan = MPI_UNDEFINED;
     // printf("rank %d is_orphan: %d\n", rank, is_orphan);
     MPI_Comm tree_comm = MPI_COMM_NULL;
-    printf("DEBUG: before comm split\n");
+    // printf("DEBUG: before comm split\n");
     MPI_Comm_split(comm, is_orphan, rank, &tree_comm);
-    printf("DEBUG: after comm split\n");
+    // printf("DEBUG: after comm split\n");
     if (tree_comm == MPI_COMM_NULL) {
         // printf("DEBUG: tree comm is NULL\n");
         return;
@@ -200,16 +200,12 @@ void tree_reduce(
      * k now is equal to the maximum depth of the tree. Exit
      * for loop. Proceed with other steps.
      * 
-     * BUG: the last step of aggregation is not performed.
-     * Rank 0 never prepares to receive from the other rank in
-     * the version accepting the buffer from the user.
-     *
      * */
     int levels = log_2_ceil(tree_size);
     printf("total depth of the tree is %d\n", levels);
     for (int k = 0; k < levels; k++) {
         uint64_t step_size = 0b0001 << k;
-        printf("DEBUG: current step size is %llu\n", step_size);
+        // printf("DEBUG: current step size is %llu\n", step_size);
         if (tree_rank % (2 * step_size) != 0) {
             /* sender branch */
             size_t size = 0;
@@ -225,14 +221,14 @@ void tree_reduce(
         } else {
             /* receiver branch */
             int sender = tree_rank + step_size;
-            printf("DEBUG: rank %d is preparing to receive from %d\n", tree_rank, sender);
+            // printf("DEBUG: rank %d is preparing to receive from %d\n", tree_rank, sender);
             size_t recv_size;
             MPI_Recv(&recv_size, 1, MPI_UNSIGNED_LONG, sender, 0, tree_comm,
                 MPI_STATUS_IGNORE);
             char *buf = xmalloc(recv_size);
             MPI_Recv(buf, recv_size, MPI_CHAR, sender, 0, tree_comm,
                 MPI_STATUS_IGNORE);
-            printf("DEBUG: rank %d received from %d\n", tree_rank, sender);
+            // printf("DEBUG: rank %d received from %d\n", tree_rank, sender);
             struct QDigest *tmp = from_string(buf);
             merge(q, tmp);
             delete_qdigest(tmp);
@@ -244,7 +240,7 @@ void tree_reduce(
      * These are the processes that send at the first level and break from
      * the loop. */
     // MPI_Barrier(tree_comm);
-    printf("DEBUG: completed tree reduce\n");
+    // printf("DEBUG: completed tree reduce\n");
     MPI_Comm_free(&tree_comm);
     return;
 } /* tree_reduce */
