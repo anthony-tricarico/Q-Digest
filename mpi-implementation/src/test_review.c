@@ -1,3 +1,29 @@
+/** 
+ *  @file test_review.c
+ *  @brief This file contains a small test carried out to check
+ *  that the end-to-end workflow would work as expected. The
+ *  operations performed in this file replicate what would happen
+ *  normally when a quantile query is issued and data from different
+ *  nodes should be retrieved and aggregated according to the rules
+ *  set by the Q-Digest data structure.
+ *  On a more technical note, the algorithm works as follows:
+ *  1. Data is simulated and sent from process 0 to each node
+ *  making sure that each process receives equally-sized
+ *  integer-valued vectors. This is achieved by using
+ *  `MPI_Scatterv`.
+ *  2. The maximum `upper_bound` of the data distribution (i.e., the
+ *  largest integer contained in the vector) is extracted and
+ *  it is compared to all the other maximums extracted from the other
+ *  processes. The largest integer among those is saved in the variable
+ *  `global_upper_bound` with the use of `MPI_Allreduce`.
+ *  3. Each process builds its own Q-Digest from the vector of data
+ *  received, using the `global_upper_bound` as its `upper_bound` parameter.
+ *  4. A binary tree reduce is performed to merge all Q-Digests at each
+ *  step with other Q-Digest in their relative partner processes until
+ *  a single Q-Digest is created and can be queried to answer the quantile
+ *  query that was originally requested by the user.
+ *
+ */
 #include <mpi.h>
 #include <math.h>
 #include <stdio.h>
@@ -22,6 +48,7 @@ int compute_median(int *buf, size_t size);
 int main(void) 
 {
     int rank, comm_sz;
+    size_t global_upper_bound;
 
     MPI_Init(NULL, NULL);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -84,7 +111,6 @@ int main(void)
 
     // From the data buffer create the q-digest
     size_t local_upper_bound = _get_curr_upper_bound(local_buf, local_n);
-    size_t global_upper_bound;
     MPI_Allreduce(
         &local_upper_bound,
         &global_upper_bound,
