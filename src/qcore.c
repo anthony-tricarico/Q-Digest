@@ -13,6 +13,7 @@
 #include <string.h>
 #include <unistd.h>
 
+
 /* This function is used to compute the base-2 logarithm of a given input n */
 size_t log_2_ceil(size_t n) {
     /* Check if the given n is already a power of 2 with bitwise operations */
@@ -378,6 +379,10 @@ size_t postorder_by_rank(struct QDigestNode *n, size_t *curr_rank,
  * */
 size_t percentile(struct QDigest *q, double p) {
     // p is in the range [0,1]
+    if (p < 0 || p > 1) {
+        fprintf(stderr, "ERROR: insert a valid value for p (between 0 and 1, inclusive)");
+        exit(EXIT_FAILURE);
+    }
     size_t curr_rank = 0;
     const size_t req_rank = p * q->N;
     return postorder_by_rank(q->root, &curr_rank, req_rank);
@@ -420,6 +425,48 @@ void merge(struct QDigest *q1, const struct QDigest *q2) {
 
 /* Functions in this section utilize a buffer (buf) to communicate */
 
+/* For now let's keep both the expanded to_string with length computation feature,
+and the get_num_of_bytes to see which one is most useful for our case. */
+size_t _digits(size_t value)
+{
+    size_t digits = 1;
+    while (value >= 10) 
+    {
+        value /= 10;
+        digits++;
+    }
+    return digits;
+}
+
+size_t get_bytes_of_node(struct QDigestNode *n)
+{
+    if (!n) return 0;
+    size_t size = 0;
+    if (n->count > 0)
+    {
+        /* two spaces + newline */
+        size += _digits(n->count) + _digits(n->lower_bound) + 
+                _digits(n->upper_bound) + 3; 
+    }
+    size += get_bytes_of_node(n->right);
+    size += get_bytes_of_node(n->left);
+    return size;
+
+}
+
+size_t get_num_of_bytes(struct QDigest *q)
+{
+    if (!q || !q->root) return 0;
+    size_t size = 0;
+    struct QDigestNode *n = q->root;
+    /* header: 3 spaces + newline */
+    size += _digits(q->N) + _digits(q->K) +
+            _digits(n->upper_bound) + _digits(n->lower_bound) + 4; 
+    size += get_bytes_of_node(n);
+    size += 1; /* null terminator */
+    return size;
+}
+
 /*
  * Perform a pre-order traversal of the tree and serialize all the
  * nodes with a non-zero count. Separates each node with a newline (\n).
@@ -432,7 +479,7 @@ void merge(struct QDigest *q1, const struct QDigest *q2) {
  * buffer, other wise we cause a buffer overflow.
  */
 char *preorder_to_string(struct QDigestNode *n, char *buf, size_t *length) {
-    int k;
+    int k = 0;
     if (!n) return buf;
     if (n->count > 0) {
         k = sprintf(buf, "%zu %zu %zu\n",
@@ -448,7 +495,7 @@ char *preorder_to_string(struct QDigestNode *n, char *buf, size_t *length) {
 }
 
 void to_string(struct QDigest *q, char *buf, size_t *length) {
-    int k;
+    int k = 0;
     *length = 0;
     struct QDigestNode *root = q->root;
     k = sprintf(buf, "%zu %zu %zu %zu\n",
