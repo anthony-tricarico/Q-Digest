@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['compress_20q_20n_20k_0',['COMPRESS(Q,n,k)',['../md_docs_2serial__pseudocode.html#autotoc_md1',1,'']]]
+  ['digest_20parallel_20implementation_0',['Q-Digest Parallel Implementation',['../md__r_e_a_d_m_e.html',1,'']]],
+  ['docs_1',['Docs',['../md__r_e_a_d_m_e.html#autotoc_md7',1,'']]]
 ];

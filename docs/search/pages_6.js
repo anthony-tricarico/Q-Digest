@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['k_0',['k',['../md_docs_2serial__pseudocode.html#autotoc_md1',1,'COMPRESS(Q,n,k)'],['../md_docs_2serial__pseudocode.html#autotoc_md4',1,'MERGE(Q1(n1, k), Q2(n2, k))']]],
-  ['k_20q2_20n2_20k_1',['MERGE(Q1(n1, k), Q2(n2, k))',['../md_docs_2serial__pseudocode.html#autotoc_md4',1,'']]]
+  ['mpi_0',['Instruction to run first version of MPI',['../dir_cb97de7279c00998c4e56b74fc9b6627.html#autotoc_md0',1,'']]],
+  ['mpi_20implementation_1',['MPI Implementation',['../dir_cb97de7279c00998c4e56b74fc9b6627.html#autotoc_md1',1,'']]]
 ];

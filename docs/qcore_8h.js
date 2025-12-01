@@ -2,6 +2,7 @@ var qcore_8h =
 [
     [ "QDigestNode", "struct_q_digest_node.html", "struct_q_digest_node" ],
     [ "QDigest", "struct_q_digest.html", "struct_q_digest" ],
+    [ "_digits", "qcore_8h.html#ac105bb14b2024936d997f5e18cd660b4", null ],
     [ "compress", "qcore_8h.html#a6fd311169f046587b57d46672b3c23b7", null ],
     [ "compress_if_needed", "qcore_8h.html#a7e97980435d2d907cbed1bf27ec9ffbf", null ],
     [ "create_node", "qcore_8h.html#a9adb83754a20165fb3e333a9f9612331", null ],
@@ -13,6 +14,8 @@ var qcore_8h =
     [ "expand_tree", "qcore_8h.html#aa2c0811b629da7d0af69034b4befcada", null ],
     [ "free_tree", "qcore_8h.html#a9f6a01d56b8708f88f3cf16d43ba11c6", null ],
     [ "from_string", "qcore_8h.html#a4170bb66a23c75cf884abce8256f6a60", null ],
+    [ "get_bytes_of_node", "qcore_8h.html#a4289a94c02292931623f084198deca5f", null ],
+    [ "get_num_of_bytes", "qcore_8h.html#afd6a71b151ce1415ecfe30677ad80b9b", null ],
     [ "insert", "qcore_8h.html#a353f7a0e1cdba9906008561171515863", null ],
     [ "insert_node", "qcore_8h.html#a5d8376a2801c0159f1a7833b018a89b6", null ],
     [ "log_2_ceil", "qcore_8h.html#a54a31f38410c0938070c6417970f8122", null ],

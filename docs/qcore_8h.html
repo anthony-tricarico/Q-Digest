@@ -146,6 +146,12 @@ Functions</h2></td></tr>
 <tr class="memdesc:a16aa1f7a872be99335caef6193fe9bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Merges the contents of two QDigests into one.  <br /></td></tr>
 <tr class="memitem:ad482fe37eed194146172784b3e58b76c" id="r_ad482fe37eed194146172784b3e58b76c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad482fe37eed194146172784b3e58b76c">percentile</a> (struct <a class="el" href="struct_q_digest.html">QDigest</a> *q, double p)</td></tr>
 <tr class="memdesc:ad482fe37eed194146172784b3e58b76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the value associated with the p-th percentile of the data stored in the <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>.  <br /></td></tr>
+<tr class="memitem:ac105bb14b2024936d997f5e18cd660b4" id="r_ac105bb14b2024936d997f5e18cd660b4"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac105bb14b2024936d997f5e18cd660b4">_digits</a> (size_t value)</td></tr>
+<tr class="memdesc:ac105bb14b2024936d997f5e18cd660b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return number of digits for unsigned int value.  <br /></td></tr>
+<tr class="memitem:a4289a94c02292931623f084198deca5f" id="r_a4289a94c02292931623f084198deca5f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4289a94c02292931623f084198deca5f">get_bytes_of_node</a> (struct <a class="el" href="struct_q_digest_node.html">QDigestNode</a> *n)</td></tr>
+<tr class="memdesc:a4289a94c02292931623f084198deca5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the number of bytes required to serialize a node subtree.  <br /></td></tr>
+<tr class="memitem:afd6a71b151ce1415ecfe30677ad80b9b" id="r_afd6a71b151ce1415ecfe30677ad80b9b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd6a71b151ce1415ecfe30677ad80b9b">get_num_of_bytes</a> (struct <a class="el" href="struct_q_digest.html">QDigest</a> *q)</td></tr>
+<tr class="memdesc:afd6a71b151ce1415ecfe30677ad80b9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the buffer size needed to serialize an entire <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>.  <br /></td></tr>
 <tr class="memitem:af13645e2c712991ce1eab3bfd0a5a187" id="r_af13645e2c712991ce1eab3bfd0a5a187"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af13645e2c712991ce1eab3bfd0a5a187">preorder_to_string</a> (struct <a class="el" href="struct_q_digest_node.html">QDigestNode</a> *n, char *buf, size_t *buf_length)</td></tr>
 <tr class="memdesc:af13645e2c712991ce1eab3bfd0a5a187"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes a <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> tree into a string using preorder traversal.  <br /></td></tr>
 <tr class="memitem:aacccef5e606069cbf18e500d337268aa" id="r_aacccef5e606069cbf18e500d337268aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacccef5e606069cbf18e500d337268aa">to_string</a> (struct <a class="el" href="struct_q_digest.html">QDigest</a> *q, char *buf, size_t *buf_length)</td></tr>
@@ -157,6 +163,34 @@ Functions</h2></td></tr>
 <div class="textblock"><p>A collection of the core structures needed for the Q-Digest implementation. </p>
 <p>This header file contains a collection of C structs and methods to operate on them. Methods are implemented as functions taking a pointer to a struct <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> as input to avoid passing the entire structure by value and making a copy every time. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="ac105bb14b2024936d997f5e18cd660b4" name="ac105bb14b2024936d997f5e18cd660b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac105bb14b2024936d997f5e18cd660b4">&#9670;&#160;</a></span>_digits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t _digits </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>value</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return number of digits for unsigned int value. </p>
+<p>This function initialise a counter to one to then return the number of digits by dividing the value in input by 10 until the current value is less then 10, incrementing the digits counter by one at each steps.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>A reference to the value we want to know how many digits it is composed of</td></tr>
+    <tr><td class="paramname">digits</td><td>A counter of the number of digits the input value is composed of</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the number of digits the input value is composed of. </dd></dl>
+
+</div>
+</div>
 <a id="a6fd311169f046587b57d46672b3c23b7" name="a6fd311169f046587b57d46672b3c23b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6fd311169f046587b57d46672b3c23b7">&#9670;&#160;</a></span>compress()</h2>
 
@@ -514,6 +548,64 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>The function uses <span class="tt"><a class="el" href="#a5bd6b8fd9c9a4e9e452cc109940f5d92" title="This function creates a Q-Digest by using some defaults values to mirror the behavior of the class co...">create_tmp_q()</a></span> and <span class="tt"><a class="el" href="#a5d8376a2801c0159f1a7833b018a89b6" title="Inserts an existing QDigestNode into the digest, creating intermediate nodes as needed.">insert_node()</a></span> internally to rebuild the tree structure and maintain canonical <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> intervals. </dd>
 <dd>
 Only nodes with count &gt; 0 are expected in the serialized string. </dd></dl>
+
+</div>
+</div>
+<a id="a4289a94c02292931623f084198deca5f" name="a4289a94c02292931623f084198deca5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4289a94c02292931623f084198deca5f">&#9670;&#160;</a></span>get_bytes_of_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_bytes_of_node </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_q_digest_node.html">QDigestNode</a> *</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the number of bytes required to serialize a node subtree. </p>
+<p>Recursively walks the provided node, summing the number of characters needed to serialize every descendant with a non-zero count, including delimiters between the lower bound, upper bound, and count values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>A pointer to the node whose subtree will be measured. NULL returns 0.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The exact number of bytes required to serialize the subtree rooted at <code class="param">n</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The calculation currently adds a hard-coded 3 bytes for the two spaces and newline that separate the three values in each row. Once we allow configurable delimiters, this literal will be replaced with the length of the delimiter strings provided at runtime. </dd></dl>
+
+</div>
+</div>
+<a id="afd6a71b151ce1415ecfe30677ad80b9b" name="afd6a71b151ce1415ecfe30677ad80b9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd6a71b151ce1415ecfe30677ad80b9b">&#9670;&#160;</a></span>get_num_of_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t get_num_of_bytes </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_q_digest.html">QDigest</a> *</td>          <td class="paramname"><span class="paramname"><em>q</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the buffer size needed to serialize an entire <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>. </p>
+<p>Sums the bytes required for the header line and all nodes with non-zero counts (by delegating to <span class="tt"><a class="el" href="#a4289a94c02292931623f084198deca5f" title="Computes the number of bytes required to serialize a node subtree.">get_bytes_of_node()</a></span>), and includes space for the terminating null byte so callers can pre-allocate an adequate buffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>Pointer to the <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> whose serialized size is requested.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of bytes required for the serialized digest, including the null terminator. Returns 0 if the digest or root is NULL.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The header size calculation currently assumes exactly three spaces and one newline (4 bytes) in the metadata line. This literal will be replaced by the computed length of configurable field separators once we support injecting custom formatting. </dd>
+<dd>
+Another intereseting update would be that for the explicit +1 for the null terminator to become the length of the caller-provided terminator sequence when we move to dynamic serialization options. </dd></dl>
 
 </div>
 </div>

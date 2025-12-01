@@ -100,21 +100,31 @@ $(function(){initNavTree('queue_8h.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:queueNode" id="r_queueNode"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structqueue_node.html">queueNode</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The struct implementing a node in the queue.  <a href="structqueue_node.html#details">More...</a><br /></td></tr>
 <tr class="memitem:queue" id="r_queue"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structqueue.html">queue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The struct implementing a queue.  <a href="structqueue.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3e00294a1d3d049eae97c1dcabe63588" id="r_a3e00294a1d3d049eae97c1dcabe63588"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_q_digest_node.html">QDigestNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e00294a1d3d049eae97c1dcabe63588">Item</a></td></tr>
+<tr class="memdesc:a3e00294a1d3d049eae97c1dcabe63588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declares <a class="el" href="#a3e00294a1d3d049eae97c1dcabe63588" title="Declares Item to be an alias for a pointer to a struct QDigestNode.">Item</a> to be an alias for a pointer to a struct <a class="el" href="struct_q_digest_node.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a>.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a1613cbe84c449970d5871565cb7691d9" id="r_a1613cbe84c449970d5871565cb7691d9"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structqueue_node.html">queueNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1613cbe84c449970d5871565cb7691d9">create_queue_node</a> (<a class="el" href="#a3e00294a1d3d049eae97c1dcabe63588">Item</a> val)</td></tr>
+<tr class="memdesc:a1613cbe84c449970d5871565cb7691d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function allocates memory for a <a class="el" href="structqueue_node.html" title="The struct implementing a node in the queue.">queueNode</a> and initializes it to contain the specified value (<span class="tt">val</span>).  <br /></td></tr>
 <tr class="memitem:ab29f8f0656c4a8d642e68c1d577def47" id="r_ab29f8f0656c4a8d642e68c1d577def47"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structqueue.html">queue</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29f8f0656c4a8d642e68c1d577def47">create_queue</a> (void)</td></tr>
+<tr class="memdesc:ab29f8f0656c4a8d642e68c1d577def47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes an empty queue.  <br /></td></tr>
 <tr class="memitem:a93aba38b4cdd2272531863f5311c127f" id="r_a93aba38b4cdd2272531863f5311c127f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93aba38b4cdd2272531863f5311c127f">push</a> (struct <a class="el" href="structqueue.html">queue</a> *q, struct <a class="el" href="structqueue_node.html">queueNode</a> *n)</td></tr>
+<tr class="memdesc:a93aba38b4cdd2272531863f5311c127f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues a node at the end of a queue.  <br /></td></tr>
 <tr class="memitem:a9cd56e4473957d76de249b2d2a558f71" id="r_a9cd56e4473957d76de249b2d2a558f71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a3e00294a1d3d049eae97c1dcabe63588">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cd56e4473957d76de249b2d2a558f71">front</a> (struct <a class="el" href="structqueue.html">queue</a> *q)</td></tr>
+<tr class="memdesc:a9cd56e4473957d76de249b2d2a558f71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value stored at the front of the queue.  <br /></td></tr>
 <tr class="memitem:a2a5864fd30e81d901f1049a05a4da341" id="r_a2a5864fd30e81d901f1049a05a4da341"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a3e00294a1d3d049eae97c1dcabe63588">Item</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a5864fd30e81d901f1049a05a4da341">pop</a> (struct <a class="el" href="structqueue.html">queue</a> *q)</td></tr>
+<tr class="memdesc:a2a5864fd30e81d901f1049a05a4da341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes and returns the value at the front of the queue.  <br /></td></tr>
 <tr class="memitem:a6859a53ec8f0598ba5ccc198c01653a9" id="r_a6859a53ec8f0598ba5ccc198c01653a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6859a53ec8f0598ba5ccc198c01653a9">is_empty</a> (struct <a class="el" href="structqueue.html">queue</a> *q)</td></tr>
+<tr class="memdesc:a6859a53ec8f0598ba5ccc198c01653a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether a queue is empty.  <br /></td></tr>
 <tr class="memitem:a8a61f42a0959df368084efde1e875e62" id="r_a8a61f42a0959df368084efde1e875e62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a61f42a0959df368084efde1e875e62">delete_queue</a> (struct <a class="el" href="structqueue.html">queue</a> *q)</td></tr>
+<tr class="memdesc:a8a61f42a0959df368084efde1e875e62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a queue and frees all associated memory.  <br /></td></tr>
 </table>
 <a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
 <a id="a3e00294a1d3d049eae97c1dcabe63588" name="a3e00294a1d3d049eae97c1dcabe63588"></a>
@@ -128,6 +138,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Declares <a class="el" href="#a3e00294a1d3d049eae97c1dcabe63588" title="Declares Item to be an alias for a pointer to a struct QDigestNode.">Item</a> to be an alias for a pointer to a struct <a class="el" href="struct_q_digest_node.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a>. </p>
 
 </div>
 </div>
@@ -147,6 +159,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Creates and initializes an empty queue. </p>
+<p>This function allocates a new <span class="tt">struct <a class="el" href="structqueue.html" title="The struct implementing a queue.">queue</a></span> and initializes its fields so that it represents an empty FIFO queue. Both the <span class="tt">first</span> and <span class="tt">last</span> pointers are set to NULL, and the length is initialized to zero.</p>
+<p>The queue is typically used to support breadth-first traversal of <a class="el" href="struct_q_digest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> trees during operations such as merging.</p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to a newly allocated, empty queue. The caller is responsible for freeing the queue using <span class="tt"><a class="el" href="#a8a61f42a0959df368084efde1e875e62" title="Deletes a queue and frees all associated memory.">delete_queue()</a></span> when it is no longer needed.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Memory is allocated using <span class="tt"><a class="el" href="memory__utils_8h.html#af7b6b8fd37a3c4b944c71b783d50fc96" title="A function that checks whether the memory allocation with malloc returned a NULL pointer implying an ...">xmalloc()</a></span>, which is expected to abort on allocation failure. </dd></dl>
+
 </div>
 </div>
 <a id="a1613cbe84c449970d5871565cb7691d9" name="a1613cbe84c449970d5871565cb7691d9"></a>
@@ -163,6 +181,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function allocates memory for a <a class="el" href="structqueue_node.html" title="The struct implementing a node in the queue.">queueNode</a> and initializes it to contain the specified value (<span class="tt">val</span>). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>A pointer to a <a class="el" href="struct_q_digest_node.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> to be added as a <a class="el" href="structqueue_node.html" title="The struct implementing a node in the queue.">queueNode</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -181,6 +207,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Deletes a queue and frees all associated memory. </p>
+<p>This function repeatedly removes and frees all elements from the queue using <span class="tt"><a class="el" href="#a2a5864fd30e81d901f1049a05a4da341" title="Removes and returns the value at the front of the queue.">pop()</a></span>, ensuring that no queue nodes remain allocated. After the queue is emptied, the queue structure itself is freed.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>A pointer to the queue to be deleted. <br  />
+ Must not be NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a9cd56e4473957d76de249b2d2a558f71" name="a9cd56e4473957d76de249b2d2a558f71"></a>
@@ -197,6 +233,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Retrieves the value stored at the front of the queue. </p>
+<p>This function returns the <span class="tt">val</span> field of the first node in the queue, without removing that node. It assumes that the queue is not empty; callers must ensure this (e.g., by checking <span class="tt">is_empty(q)</span> beforehand).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>A pointer to the queue whose front value is requested.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value stored in the first node of the queue.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Calling this function on an empty queue results in dereferencing a NULL pointer and therefore undefined behavior. </dd></dl>
 
 </div>
 </div>
@@ -215,6 +262,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks whether a queue is empty. </p>
+<p>This function returns true if the queue contains no elements (i.e., its length is zero), and false otherwise.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>A pointer to the queue to be checked.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><span class="tt">true</span> if the queue has no elements; <br  />
+ <span class="tt">false</span> if it contains one or more elements. </dd></dl>
+
 </div>
 </div>
 <a id="a2a5864fd30e81d901f1049a05a4da341" name="a2a5864fd30e81d901f1049a05a4da341"></a>
@@ -231,6 +289,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Removes and returns the value at the front of the queue. </p>
+<p>This function removes the first node from the queue, returns its stored value, and frees the node. The queue’s length and first/last pointers are updated accordingly. <br  />
+</p>
+<p>If the queue is empty, the function prints an error message to stderr and aborts the program.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>A pointer to the queue from which the front element should be removed.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value stored in the node that was removed from the front of the queue.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Calling this function on an empty queue causes program termination. </dd></dl>
 
 </div>
 </div>
@@ -252,6 +323,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Enqueues a node at the end of a queue. </p>
+<p>This function appends a <span class="tt">struct <a class="el" href="structqueue_node.html" title="The struct implementing a node in the queue.">queueNode</a></span> to the tail of the given queue. If the queue is currently empty, the new node becomes both the head and tail. Otherwise, it is linked to the existing last node and becomes the new tail.</p>
+<p>The node's <span class="tt">next</span> pointer is assumed to be properly initialized (typically NULL) by the caller or by the node creation function.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>A pointer to the queue into which the node will be inserted. </td></tr>
+    <tr><td class="paramname">n</td><td>The node to enqueue. Must not be NULL.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function increments the queue length counter. </dd></dl>
 
 </div>
 </div>

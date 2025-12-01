@@ -25,24 +25,13 @@
 var NAVTREE =
 [
   [ "Parallel Q-Digest", "index.html", [
-    [ "Pseudocode for the serial implementation", "md_docs_2serial__pseudocode.html", [
-      [ "COMPRESS(Q,n,k)", "md_docs_2serial__pseudocode.html#autotoc_md1", [
-        [ "Inputs", "md_docs_2serial__pseudocode.html#autotoc_md2", null ],
-        [ "Pseudocode", "md_docs_2serial__pseudocode.html#autotoc_md3", null ]
-      ] ],
-      [ "MERGE(Q1(n1, k), Q2(n2, k))", "md_docs_2serial__pseudocode.html#autotoc_md4", [
-        [ "Inputs", "md_docs_2serial__pseudocode.html#autotoc_md5", null ],
-        [ "Pseudocode", "md_docs_2serial__pseudocode.html#autotoc_md6", null ]
-      ] ],
-      [ "Sources", "md_docs_2serial__pseudocode.html#autotoc_md7", null ]
-    ] ],
     [ "Q-Digest Parallel Implementation", "md__r_e_a_d_m_e.html", [
-      [ "Building the project", "md__r_e_a_d_m_e.html#autotoc_md13", null ],
-      [ "Docs", "md__r_e_a_d_m_e.html#autotoc_md14", null ]
+      [ "Building the project", "md__r_e_a_d_m_e.html#autotoc_md6", null ],
+      [ "Docs", "md__r_e_a_d_m_e.html#autotoc_md7", null ]
     ] ],
     [ "Instructions for testing", "md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html", [
-      [ "Results of testing on QCore", "md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html#autotoc_md16", null ],
-      [ "Acknowledgments", "md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html#autotoc_md17", null ]
+      [ "Results of testing on QCore", "md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html#autotoc_md9", null ],
+      [ "Acknowledgments", "md_serial-implementation_2_i_n_s_t_r_u_c_t_i_o_n_s.html#autotoc_md10", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
