@@ -1,5 +1,5 @@
 CC = mpicc
-CFLAGS = -Iinclude -I../include -DTEST
+CFLAGS = -Iinclude -I../include -DTEST -std=gnu99
 # CFLAGS_DEBUG = $(CFLAGS) -g -O0
 
 BUILD_DIR = build
@@ -28,7 +28,7 @@ $(EXEC): $(OBJS) | $(EXEC_DIR)
 	$(CC) $(CFLAGS) $^ -o $@
 
 run-local-main: $(EXEC)
-	mpirun -n 4 $(EXEC)
+	mpirun -n 10  $(EXEC)
 
 # Test binary
 test-mpi: $(TEST_EXEC)
