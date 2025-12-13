@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quantiles_0',['quantiles',['../namespacegenerate__dataset.html#ad1fc435e9d46dcf2824019af91636b2f',1,'generate_dataset']]]
+  ['type_0',['type',['../namespacegenerate__dataset.html#a9cb08925f895eed805f720e345d79ac5',1,'generate_dataset']]]
 ];

@@ -1,6 +1,5 @@
 var namespaces_dup =
 [
-    [ "docstring", "namespacedocstring.html", "namespacedocstring" ],
     [ "generate_dataset", "namespacegenerate__dataset.html", [
       [ "action", "namespacegenerate__dataset.html#a95f5ef1e26d0b7114897074dd874c5aa", null ],
       [ "args", "namespacegenerate__dataset.html#adc62991ae8febfe5c591664405367884", null ],
@@ -34,10 +33,5 @@ var namespaces_dup =
       [ "size", "namespacegenerate__dataset.html#a48e1c72524512a8a1193ae3b618be3f7", null ],
       [ "type", "namespacegenerate__dataset.html#a9cb08925f895eed805f720e345d79ac5", null ],
       [ "valid_dists", "namespacegenerate__dataset.html#a8c388c3bb76aaa803c80c59c7f33fa1c", null ]
-    ] ],
-    [ "N1", "namespaceN1.html", null ],
-    [ "pyexample", "namespacepyexample.html", "namespacepyexample" ],
-    [ "strip_example", "namespacestrip__example.html", [
-      [ "do_print", "namespacestrip__example.html#a9fff99ba5b5564a70fa48b9757ef9885", null ]
     ] ]
 ];

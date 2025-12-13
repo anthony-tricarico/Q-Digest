@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['n_0',['N',['../structQDigest.html#a3809d4e3ad180d353e4b1ce9edba0d2d',1,'QDigest']]],
-  ['n1_1',['N1',['../namespaceN1.html',1,'']]],
-  ['nargs_2',['nargs',['../namespacegenerate__dataset.html#a11506c830af50161067c2edd0bded5e2',1,'generate_dataset']]],
-  ['next_3',['next',['../structqueueNode.html#a35116e094cde90d7490dc4c85afba119',1,'queueNode']]],
-  ['node_5fand_5fsibling_5fcount_4',['node_and_sibling_count',['../qcore_8h.html#ad064406991041115ad0fe0e2c280dbe6',1,'node_and_sibling_count(struct QDigestNode *n):&#160;qcore.c'],['../qcore_8c.html#ad064406991041115ad0fe0e2c280dbe6',1,'node_and_sibling_count(struct QDigestNode *n):&#160;qcore.c']]],
-  ['num_5finserts_5',['num_inserts',['../structQDigest.html#a4c96d8b089f2ac44b12f519dabe4f329',1,'QDigest']]],
-  ['num_5fnodes_6',['num_nodes',['../structQDigest.html#af8bacf098c026dbad94ec5a6649ab288',1,'QDigest']]]
+  ['q_2ddigest_20parallel_20implementation_0',['Q-Digest Parallel Implementation',['../md_README.html',1,'']]],
+  ['qcore_2ec_1',['qcore.c',['../qcore_8c.html',1,'']]],
+  ['qcore_2eh_2',['qcore.h',['../qcore_8h.html',1,'']]],
+  ['qdigest_3',['QDigest',['../structQDigest.html',1,'']]],
+  ['qdigestnode_4',['QDigestNode',['../structQDigestNode.html',1,'']]],
+  ['quantiles_5',['quantiles',['../namespacegenerate__dataset.html#ad1fc435e9d46dcf2824019af91636b2f',1,'generate_dataset']]],
+  ['queue_6',['queue',['../structqueue.html',1,'']]],
+  ['queue_2ec_7',['queue.c',['../queue_8c.html',1,'']]],
+  ['queue_2eh_8',['queue.h',['../queue_8h.html',1,'']]],
+  ['queuenode_9',['queueNode',['../structqueueNode.html',1,'']]]
 ];

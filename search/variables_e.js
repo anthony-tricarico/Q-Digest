@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['parent_0',['parent',['../structQDigestNode.html#afbdde9dc729eef878c01e569bb20d563',1,'QDigestNode']]],
-  ['parser_1',['parser',['../namespacegenerate__dataset.html#adcf82bc50c73f5b70ea8da31a7ced72c',1,'generate_dataset']]],
-  ['publicvar_2',['publicVar',['../classJavadoc__Test.html#a44a516fbc3a4865e2dcae34649c9df6a',1,'Javadoc_Test::publicVar()'],['../classQTstyle__Test.html#aabf7b2e9ed83ea44aca4d213baae06d3',1,'QTstyle_Test::publicVar()']]]
+  ['sd_0',['sd',['../namespacegenerate__dataset.html#a6444e167244653564fc0c72e1cc509f3',1,'generate_dataset']]],
+  ['seed_1',['seed',['../namespacegenerate__dataset.html#a05896d225c6aad8a0b97e33c435c8b61',1,'generate_dataset']]],
+  ['size_2',['size',['../structArray.html#a13f67ab957f4fdd3443d7f62b2fd09ce',1,'Array::size()'],['../namespacegenerate__dataset.html#a48e1c72524512a8a1193ae3b618be3f7',1,'generate_dataset.size()']]]
 ];

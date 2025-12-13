@@ -132,7 +132,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad064406991041115ad0fe0e2c280dbe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function returns the aggregated count for a node and its siblings.  <br /></td></tr>
 <tr class="separator:ad064406991041115ad0fe0e2c280dbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3396d04ea939c49a478693a22f146865"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qcore_8c.html#a3396d04ea939c49a478693a22f146865">delete_node_if_needed</a> (struct <a class="el" href="structQDigest.html">QDigest</a> *q, struct <a class="el" href="structQDigestNode.html">QDigestNode</a> *n, int level, int l_max)</td></tr>
-<tr class="memdesc:a3396d04ea939c49a478693a22f146865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines which tree nodes can be deleted. <a class="el" href="classA.html">A</a> tree node which has a count of 0 can be deleted only if it has no children. Returns 'true' or 'false' depending on whether it deleted the node n from the tree.  <br /></td></tr>
+<tr class="memdesc:a3396d04ea939c49a478693a22f146865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines which tree nodes can be deleted. A tree node which has a count of 0 can be deleted only if it has no children. Returns 'true' or 'false' depending on whether it deleted the node n from the tree.  <br /></td></tr>
 <tr class="separator:a3396d04ea939c49a478693a22f146865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fd311169f046587b57d46672b3c23b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="qcore_8c.html#a6fd311169f046587b57d46672b3c23b7">compress</a> (struct <a class="el" href="structQDigest.html">QDigest</a> *q, struct <a class="el" href="structQDigestNode.html">QDigestNode</a> *n, int level, int l_max, size_t nDivk)</td></tr>
 <tr class="memdesc:a6fd311169f046587b57d46672b3c23b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function attempts compression on the Q-Digest structure. The function is applied recursively by traversing the left and right subtrees. The function calls <a class="el" href="qcore_8h.html#a3396d04ea939c49a478693a22f146865" title="Determines which tree nodes can be deleted. A tree node which has a count of 0 can be deleted only if...">delete_node_if_needed()</a> to check which nodes should be deleted. If a node has not been deleted, and if the count of itself and its siblings is less than the compression ratio (N/K) then the children nodes are visited and it is checked if they are ready for deletion. By the time the function returns, the Q-Digest has been cleaned of all the nodes that have a low count, thus achieving a degree of compression.  <br /></td></tr>
@@ -204,12 +204,12 @@ Functions</h2></td></tr>
 <p>This function initialise a counter to one to then return the number of digits by dividing the value in input by 10 until the current value is less then 10, incrementing the digits counter by one at each steps.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td><a class="el" href="classA.html">A</a> reference to the value we want to know how many digits it is composed of</td></tr>
-    <tr><td class="paramname">digits</td><td><a class="el" href="classA.html">A</a> counter of the number of digits the input value is composed of</td></tr>
+    <tr><td class="paramname">value</td><td>A reference to the value we want to know how many digits it is composed of</td></tr>
+    <tr><td class="paramname">digits</td><td>A counter of the number of digits the input value is composed of</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> reference to the number of digits the input value is composed of. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the number of digits the input value is composed of. </dd></dl>
 
 </div>
 </div>
@@ -493,7 +493,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Determines which tree nodes can be deleted. <a class="el" href="classA.html">A</a> tree node which has a count of 0 can be deleted only if it has no children. Returns 'true' or 'false' depending on whether it deleted the node n from the tree. </p>
+<p>Determines which tree nodes can be deleted. A tree node which has a count of 0 can be deleted only if it has no children. Returns 'true' or 'false' depending on whether it deleted the node n from the tree. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">q</td><td>a pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> which should be affected by the deletion.</td></tr>
@@ -617,11 +617,11 @@ Functions</h2></td></tr>
 <p>Each subsequent line represents a node: "&lt;lower_bound&gt; &lt;upper_bound&gt; &lt;count&gt;\n"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buf</td><td><a class="el" href="classA.html">A</a> pointer to a null-terminated string containing the serialized <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>.</td></tr>
+    <tr><td class="paramname">buf</td><td>A pointer to a null-terminated string containing the serialized <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> pointer to a newly allocated <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> reconstructed from the string, or NULL if the header is invalid. The caller is responsible for freeing the returned digest using <code><a class="el" href="qcore_8h.html#a83300c21bd8cc5727249cc7a81d4fe8b" title="This is a wrapper function around free_tree that automatically destroys and frees memory from a QDige...">delete_qdigest()</a></code>.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to a newly allocated <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> reconstructed from the string, or NULL if the header is invalid. The caller is responsible for freeing the returned digest using <code><a class="el" href="qcore_8h.html#a83300c21bd8cc5727249cc7a81d4fe8b" title="This is a wrapper function around free_tree that automatically destroys and frees memory from a QDige...">delete_qdigest()</a></code>.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The function uses <code><a class="el" href="qcore_8h.html#a5bd6b8fd9c9a4e9e452cc109940f5d92" title="This function creates a Q-Digest by using some defaults values to mirror the behavior of the class co...">create_tmp_q()</a></code> and <code><a class="el" href="qcore_8h.html#a5d8376a2801c0159f1a7833b018a89b6" title="Inserts an existing QDigestNode into the digest, creating intermediate nodes as needed.">insert_node()</a></code> internally to rebuild the tree structure and maintain canonical <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> intervals. </dd>
 <dd>
 Only nodes with count &gt; 0 are expected in the serialized string. </dd></dl>
@@ -648,7 +648,7 @@ Only nodes with count &gt; 0 are expected in the serialized string. </dd></dl>
 <p>Recursively walks the provided node, summing the number of characters needed to serialize every descendant with a non-zero count, including delimiters between the lower bound, upper bound, and count values.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">n</td><td><a class="el" href="classA.html">A</a> pointer to the node whose subtree will be measured. NULL returns 0.</td></tr>
+    <tr><td class="paramname">n</td><td>A pointer to the node whose subtree will be measured. NULL returns 0.</td></tr>
   </table>
   </dd>
 </dl>
@@ -727,13 +727,13 @@ Another intereseting update would be that for the explicit +1 for the null termi
 </div><div class="memdoc">
 
 <p>Inserts a value (or multiple occurrences of a value) into a <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>. </p>
-<p><a class="el" href="classA.html">A</a> <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> represents integer values over a universe [0, N) where N is always a power of two. Each inserted value is routed from the root to the appropriate leaf, creating missing nodes along the path as needed. The node corresponding to the exact key range then has its count increased. Optional post-insertion compression may occur depending on the <code>try_compress</code> flag.</p>
+<p>A <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> represents integer values over a universe [0, N) where N is always a power of two. Each inserted value is routed from the root to the appropriate leaf, creating missing nodes along the path as needed. The node corresponding to the exact key range then has its count increased. Optional post-insertion compression may occur depending on the <code>try_compress</code> flag.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to a struct QDigest* representing the digest into which the value is being inserted.</td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to a struct QDigest* representing the digest into which the value is being inserted.</td></tr>
     <tr><td class="paramname">key</td><td>The integer value to insert. If the key exceeds the digest’s current universe size, the digest is first expanded so that key lies within the new universe range.</td></tr>
     <tr><td class="paramname">count</td><td>How many occurrences of the value to insert. This is added to the count of the leaf node that represents <code>key</code>.</td></tr>
-    <tr><td class="paramname">try_compress</td><td><a class="el" href="classA.html">A</a> boolean flag. If true, the digest may perform a compression pass after insertion. If false, the caller is responsible for periodically calling compression manually. </td></tr>
+    <tr><td class="paramname">try_compress</td><td>A boolean flag. If true, the digest may perform a compression pass after insertion. If false, the caller is responsible for periodically calling compression manually. </td></tr>
   </table>
   </dd>
 </dl>
@@ -771,8 +771,8 @@ Another intereseting update would be that for the explicit +1 for the null termi
 <p>The function assumes that <code>n</code>’s interval is entirely contained within the universe of <code>q</code>. It does not perform universe expansion; callers must ensure compatibility beforehand.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> into which the node is being inserted.</td></tr>
-    <tr><td class="paramname">n</td><td><a class="el" href="classA.html">A</a> pointer to the <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> whose interval and count are to be merged into the digest <code>q</code>. The interval [n-&gt;lower_bound, n-&gt;upper_bound] must lie within the current root interval of <code>q</code>. </td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> into which the node is being inserted.</td></tr>
+    <tr><td class="paramname">n</td><td>A pointer to the <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> whose interval and count are to be merged into the digest <code>q</code>. The interval [n-&gt;lower_bound, n-&gt;upper_bound] must lie within the current root interval of <code>q</code>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -841,8 +841,8 @@ Another intereseting update would be that for the explicit +1 for the null termi
 <p>Once all nodes have been inserted, a compression pass is applied to restore <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> invariants. Finally, <code>q1</code> is replaced with the merged digest, and all temporary structures are freed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q1</td><td><a class="el" href="classA.html">A</a> pointer to the destination <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>. After the merge, <code>q1</code> contains the combined contents of both digests.</td></tr>
-    <tr><td class="paramname">q2</td><td><a class="el" href="classA.html">A</a> pointer to the source <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>. Its nodes are read but not modified. All key ranges and counts from <code>q2</code> are inserted into the merged digest.</td></tr>
+    <tr><td class="paramname">q1</td><td>A pointer to the destination <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>. After the merge, <code>q1</code> contains the combined contents of both digests.</td></tr>
+    <tr><td class="paramname">q2</td><td>A pointer to the source <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>. Its nodes are read but not modified. All key ranges and counts from <code>q2</code> are inserted into the merged digest.</td></tr>
   </table>
   </dd>
 </dl>
@@ -909,8 +909,8 @@ The resulting digest’s accuracy guarantees follow the stronger (i.e., larger K
 <p>Internally, this delegates the search to <code><a class="el" href="qcore_8h.html#a1f810632cf9899e3931ab319b90c15ac" title="Performs a post-order traversal to locate the value associated with a given cumulative rank.">postorder_by_rank()</a></code>, which walks the digest in increasing-value order and returns the upper_bound of the node associated with the requested rank. Because <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> nodes represent value ranges, the returned value corresponds to the endpoint of the interval in which the percentile falls.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> from which the percentile is computed.</td></tr>
-    <tr><td class="paramname">p</td><td><a class="el" href="classA.html">A</a> floating-point percentile value in the range [0, 1]. For example, 0.5 corresponds to the median, 0.9 to the 90th percentile, etc.</td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> from which the percentile is computed.</td></tr>
+    <tr><td class="paramname">p</td><td>A floating-point percentile value in the range [0, 1]. For example, 0.5 corresponds to the median, 0.9 to the 90th percentile, etc.</td></tr>
   </table>
   </dd>
 </dl>
@@ -957,8 +957,8 @@ The resulting digest’s accuracy guarantees follow the stronger (i.e., larger K
 <p>This is a utility commonly used to answer quantile queries in <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a>, where nodes represent aggregated ranges and are visited in an order consistent with increasing value.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">n</td><td><a class="el" href="classA.html">A</a> pointer to the current <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> being inspected. <a class="el" href="classA.html">A</a> NULL pointer causes the function to return 0 immediately.</td></tr>
-    <tr><td class="paramname">curr_rank</td><td><a class="el" href="classA.html">A</a> pointer to a counter tracking the cumulative rank accumulated so far. This value is incremented by <code>n-&gt;count</code> when the node is processed.</td></tr>
+    <tr><td class="paramname">n</td><td>A pointer to the current <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> being inspected. A NULL pointer causes the function to return 0 immediately.</td></tr>
+    <tr><td class="paramname">curr_rank</td><td>A pointer to a counter tracking the cumulative rank accumulated so far. This value is incremented by <code>n-&gt;count</code> when the node is processed.</td></tr>
     <tr><td class="paramname">req_rank</td><td>The target cumulative rank for which we are searching. Once <code>*curr_rank</code> reaches or exceeds this value, the traversal unwinds and returns the corresponding node's upper_bound.</td></tr>
   </table>
   </dd>
@@ -1004,13 +1004,13 @@ The resulting digest’s accuracy guarantees follow the stronger (i.e., larger K
 <p>The function updates the buffer pointer as it writes, and also increments the total length of the string written so far.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">n</td><td><a class="el" href="classA.html">A</a> pointer to the current <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a>. If NULL, the function returns immediately without modifying the buffer.</td></tr>
-    <tr><td class="paramname">buf</td><td><a class="el" href="classA.html">A</a> pointer to the character buffer where the serialized output is appended. The caller must ensure the buffer is large enough to hold the resulting string.</td></tr>
-    <tr><td class="paramname">length</td><td><a class="el" href="classA.html">A</a> pointer to a size_t variable that tracks the total number of characters written to the buffer. This is updated in-place as nodes are serialized.</td></tr>
+    <tr><td class="paramname">n</td><td>A pointer to the current <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a>. If NULL, the function returns immediately without modifying the buffer.</td></tr>
+    <tr><td class="paramname">buf</td><td>A pointer to the character buffer where the serialized output is appended. The caller must ensure the buffer is large enough to hold the resulting string.</td></tr>
+    <tr><td class="paramname">length</td><td>A pointer to a size_t variable that tracks the total number of characters written to the buffer. This is updated in-place as nodes are serialized.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> pointer to the position in the buffer immediately after the last character written. This allows recursive calls to continue writing from the correct location.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the position in the buffer immediately after the last character written. This allows recursive calls to continue writing from the correct location.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Only nodes with count &gt; 0 are included in the output. </dd>
 <dd>
 The output format for each node is: "&lt;lower_bound&gt; &lt;upper_bound&gt; &lt;count&gt;\n" </dd></dl>
@@ -1118,9 +1118,9 @@ The output format for each node is: "&lt;lower_bound&gt; &lt;upper_bound&gt; &lt
 <p>Each subsequent line represents a node with count &gt; 0, in preorder: "&lt;lower_bound&gt; &lt;upper_bound&gt; &lt;count&gt;\n"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> to serialize.</td></tr>
-    <tr><td class="paramname">buf</td><td><a class="el" href="classA.html">A</a> pointer to a character buffer where the string output will be written. The caller must ensure it is large enough to hold the entire serialized digest.</td></tr>
-    <tr><td class="paramname">length</td><td><a class="el" href="classA.html">A</a> pointer to a size_t variable that tracks the total number of characters written into the buffer. This is updated in-place.</td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> to serialize.</td></tr>
+    <tr><td class="paramname">buf</td><td>A pointer to a character buffer where the string output will be written. The caller must ensure it is large enough to hold the entire serialized digest.</td></tr>
+    <tr><td class="paramname">length</td><td>A pointer to a size_t variable that tracks the total number of characters written into the buffer. This is updated in-place.</td></tr>
   </table>
   </dd>
 </dl>

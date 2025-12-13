@@ -143,7 +143,7 @@ Functions</h2></td></tr>
 <p>Creates and initializes an empty queue. </p>
 <p>This function allocates a new <code>struct queue</code> and initializes its fields so that it represents an empty FIFO queue. Both the <code>first</code> and <code>last</code> pointers are set to NULL, and the length is initialized to zero.</p>
 <p>The queue is typically used to support breadth-first traversal of <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> trees during operations such as merging.</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> pointer to a newly allocated, empty queue. The caller is responsible for freeing the queue using <code><a class="el" href="queue_8h.html#a8a61f42a0959df368084efde1e875e62" title="Deletes a queue and frees all associated memory.">delete_queue()</a></code> when it is no longer needed.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to a newly allocated, empty queue. The caller is responsible for freeing the queue using <code><a class="el" href="queue_8h.html#a8a61f42a0959df368084efde1e875e62" title="Deletes a queue and frees all associated memory.">delete_queue()</a></code> when it is no longer needed.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Memory is allocated using <code><a class="el" href="memory__utils_8h.html#af7b6b8fd37a3c4b944c71b783d50fc96" title="A function that checks whether the memory allocation with malloc returned a NULL pointer implying an ...">xmalloc()</a></code>, which is expected to abort on allocation failure. </dd></dl>
 
 </div>
@@ -167,7 +167,7 @@ Functions</h2></td></tr>
 <p>This function allocates memory for a <a class="el" href="structqueueNode.html" title="The struct implementing a node in the queue.">queueNode</a> and initializes it to contain the specified value (<code>val</code>). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">val</td><td><a class="el" href="classA.html">A</a> pointer to a <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> to be added as a <a class="el" href="structqueueNode.html" title="The struct implementing a node in the queue.">queueNode</a>. </td></tr>
+    <tr><td class="paramname">val</td><td>A pointer to a <a class="el" href="structQDigestNode.html" title="A struct representing a node in the Q-Digest data structure.">QDigestNode</a> to be added as a <a class="el" href="structqueueNode.html" title="The struct implementing a node in the queue.">queueNode</a>. </td></tr>
   </table>
   </dd>
 </dl>
@@ -194,7 +194,7 @@ Functions</h2></td></tr>
 <p>This function repeatedly removes and frees all elements from the queue using <code><a class="el" href="queue_8h.html#a2a5864fd30e81d901f1049a05a4da341" title="Removes and returns the value at the front of the queue.">pop()</a></code>, ensuring that no queue nodes remain allocated. After the queue is emptied, the queue structure itself is freed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the queue to be deleted. <br  />
+    <tr><td class="paramname">q</td><td>A pointer to the queue to be deleted. <br  />
  Must not be NULL. </td></tr>
   </table>
   </dd>
@@ -222,7 +222,7 @@ Functions</h2></td></tr>
 <p>This function returns the <code>val</code> field of the first node in the queue, without removing that node. It assumes that the queue is not empty; callers must ensure this (e.g., by checking <code>is_empty(q)</code> beforehand).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the queue whose front value is requested.</td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the queue whose front value is requested.</td></tr>
   </table>
   </dd>
 </dl>
@@ -251,7 +251,7 @@ Functions</h2></td></tr>
 <p>This function returns true if the queue contains no elements (i.e., its length is zero), and false otherwise.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the queue to be checked.</td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the queue to be checked.</td></tr>
   </table>
   </dd>
 </dl>
@@ -282,7 +282,7 @@ Functions</h2></td></tr>
 <p>If the queue is empty, the function prints an error message to stderr and aborts the program.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the queue from which the front element should be removed.</td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the queue from which the front element should be removed.</td></tr>
   </table>
   </dd>
 </dl>
@@ -322,7 +322,7 @@ Functions</h2></td></tr>
 <p>The node's <code>next</code> pointer is assumed to be properly initialized (typically NULL) by the caller or by the node creation function.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">q</td><td><a class="el" href="classA.html">A</a> pointer to the queue into which the node will be inserted. </td></tr>
+    <tr><td class="paramname">q</td><td>A pointer to the queue into which the node will be inserted. </td></tr>
     <tr><td class="paramname">n</td><td>The node to enqueue. Must not be NULL.</td></tr>
   </table>
   </dd>

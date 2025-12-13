@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['last_0',['last',['../structqueue.html#a7d84e5606ef2126b776f55344cef6939',1,'queue']]],
-  ['left_1',['left',['../structQDigestNode.html#abb25a0f91280871ef6483e273f904e80',1,'QDigestNode']]],
-  ['len_2',['len',['../structqueue.html#a0a2543ce32392c9dde46a2b28c2c8937',1,'queue']]],
-  ['level_3',['level',['../namespacegenerate__dataset.html#a847ac5973abc432cdf4ef789502ebce9',1,'generate_dataset']]],
-  ['log_5f2_5fceil_4',['log_2_ceil',['../qcore_8h.html#a54a31f38410c0938070c6417970f8122',1,'log_2_ceil(size_t n):&#160;qcore.c'],['../qcore_8c.html#a54a31f38410c0938070c6417970f8122',1,'log_2_ceil(size_t n):&#160;qcore.c']]],
-  ['logger_5',['logger',['../namespacegenerate__dataset.html#a2bdda0edb3694d6ad579fb0dcaeb38bd',1,'generate_dataset']]],
-  ['lower_5fbound_6',['lower_bound',['../structQDigestNode.html#a187a6c54efe756b57a6e3e93196f0adc',1,'QDigestNode']]],
-  ['lower_5fbound_7',['LOWER_BOUND',['../main_8c.html#a44b4de4784f751e71fad94edd351ff41',1,'LOWER_BOUND():&#160;main.c'],['../test__review_8c.html#a44b4de4784f751e71fad94edd351ff41',1,'LOWER_BOUND():&#160;test_review.c']]]
+  ['n_0',['N',['../structQDigest.html#a3809d4e3ad180d353e4b1ce9edba0d2d',1,'QDigest']]],
+  ['nargs_1',['nargs',['../namespacegenerate__dataset.html#a11506c830af50161067c2edd0bded5e2',1,'generate_dataset']]],
+  ['next_2',['next',['../structqueueNode.html#a35116e094cde90d7490dc4c85afba119',1,'queueNode']]],
+  ['node_5fand_5fsibling_5fcount_3',['node_and_sibling_count',['../qcore_8h.html#ad064406991041115ad0fe0e2c280dbe6',1,'node_and_sibling_count(struct QDigestNode *n):&#160;qcore.c'],['../qcore_8c.html#ad064406991041115ad0fe0e2c280dbe6',1,'node_and_sibling_count(struct QDigestNode *n):&#160;qcore.c']]],
+  ['num_5finserts_4',['num_inserts',['../structQDigest.html#a4c96d8b089f2ac44b12f519dabe4f329',1,'QDigest']]],
+  ['num_5fnodes_5',['num_nodes',['../structQDigest.html#af8bacf098c026dbad94ec5a6649ab288',1,'QDigest']]]
 ];
