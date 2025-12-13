@@ -394,8 +394,8 @@ Functions</h2></td></tr>
 <p>Performs a power-of-two tree reduction over distributed QDigests. </p>
 <p>The routine first trims the communicator to the largest power of two not exceeding <code>comm_size</code>. Ranks in the prefixed [0, 2*orphans) window are paired (odd sends to the preceding even rank) and their digests are merged, after which odd senders exit the algorithm. Survivors form a compact communicator via <code>MPI_Comm_split()</code> so their ranks become dense in [0, p2).</p>
 <p>The remaining ranks execute a log2(tree_size)-step binary-tree reduction:</p><ul>
-<li>On each level k, ranks with <code>tree_rank % (2 * step_size) != 0</code> serialize their digest via <code><a class="el" href="qcore_8h.html#aacccef5e606069cbf18e500d337268aa" title="Serializes an entire QDigest into a string representation.">to_string()</a></code> and send it (size first, then payload) to the partner <code>tree_rank - step_size</code>.</li>
-<li>Receivers collect the serialized digest, reconstruct it with <code><a class="el" href="qcore_8h.html#a4170bb66a23c75cf884abce8256f6a60" title="Deserializes a QDigest from a string representation.">from_string()</a></code>, merge it into their local digest via <code><a class="el" href="qcore_8h.html#a16aa1f7a872be99335caef6193fe9bd1" title="Merges the contents of two QDigests into one.">merge()</a></code>, and continue to the next level.</li>
+<li>On each level k, ranks with <code>tree_rank % (2 * step_size) != 0</code> serialize their digest via <code><a class="el" href="qcore_8c.html#a7a79f3bb4cc255b3e9bb54710d805d2d" title="Serializes an entire QDigest into a string representation.">to_string()</a></code> and send it (size first, then payload) to the partner <code>tree_rank - step_size</code>.</li>
+<li>Receivers collect the serialized digest, reconstruct it with <code><a class="el" href="qcore_8c.html#a4170bb66a23c75cf884abce8256f6a60" title="Deserializes a QDigest from a string representation.">from_string()</a></code>, merge it into their local digest via <code><a class="el" href="qcore_8c.html#a16aa1f7a872be99335caef6193fe9bd1" title="Merges the contents of two QDigests into one.">merge()</a></code>, and continue to the next level.</li>
 <li>Senders drop out after transmitting.</li>
 </ul>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -407,7 +407,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Serialization uses the current <code><a class="el" href="qcore_8h.html#afd6a71b151ce1415ecfe30677ad80b9b" title="Computes the buffer size needed to serialize an entire QDigest.">get_num_of_bytes()</a></code>/<code><a class="el" href="qcore_8h.html#aacccef5e606069cbf18e500d337268aa" title="Serializes an entire QDigest into a string representation.">to_string()</a></code> pair, which assumes fixed field separators; once configurable delimiters are supported those literals will be replaced with runtime values. </dd>
+<dl class="section note"><dt>Note</dt><dd>Serialization uses the current <code><a class="el" href="qcore_8c.html#afd6a71b151ce1415ecfe30677ad80b9b" title="Computes the buffer size needed to serialize an entire QDigest.">get_num_of_bytes()</a></code>/<code><a class="el" href="qcore_8c.html#a7a79f3bb4cc255b3e9bb54710d805d2d" title="Serializes an entire QDigest into a string representation.">to_string()</a></code> pair, which assumes fixed field separators; once configurable delimiters are supported those literals will be replaced with runtime values. </dd>
 <dd>
 All MPI messages use tag 0 and blocking send/recv; future work may introduce configurable tags or non-blocking operations. </dd></dl>
 

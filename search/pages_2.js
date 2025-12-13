@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pseudocode_20for_20the_20serial_20implementation_0',['Pseudocode for the serial implementation',['../md_docs_serial_pseudocode.html',1,'']]]
+  ['q_2ddigest_20parallel_20implementation_0',['Q-Digest Parallel Implementation',['../md_README.html',1,'']]]
 ];

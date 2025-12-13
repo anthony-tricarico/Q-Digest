@@ -25,36 +25,25 @@
 var NAVTREE =
 [
   [ "Parallel Q-Digest", "index.html", [
-    [ "Pseudocode for the serial implementation", "md_docs_serial_pseudocode.html", [
-      [ "COMPRESS(Q,n,k)", "md_docs_serial_pseudocode.html#autotoc_md1", [
-        [ "Inputs", "md_docs_serial_pseudocode.html#autotoc_md2", null ],
-        [ "Pseudocode", "md_docs_serial_pseudocode.html#autotoc_md3", null ]
-      ] ],
-      [ "MERGE(Q1(n1, k), Q2(n2, k))", "md_docs_serial_pseudocode.html#autotoc_md4", [
-        [ "Inputs", "md_docs_serial_pseudocode.html#autotoc_md5", null ],
-        [ "Pseudocode", "md_docs_serial_pseudocode.html#autotoc_md6", null ]
-      ] ],
-      [ "Sources", "md_docs_serial_pseudocode.html#autotoc_md7", null ]
+    [ "Dataset generator", "md_src_dataset_generator_README.html", [
+      [ "Setup", "md_src_dataset_generator_README.html#autotoc_md1", null ],
+      [ "Example usage", "md_src_dataset_generator_README.html#autotoc_md2", null ]
+    ] ],
+    [ "Instructions for testing", "md_serial_implementation_INSTRUCTIONS.html", [
+      [ "Results of testing on QCore", "md_serial_implementation_INSTRUCTIONS.html#autotoc_md4", null ],
+      [ "Acknowledgments", "md_serial_implementation_INSTRUCTIONS.html#autotoc_md5", null ]
     ] ],
     [ "Instruction to run first version of MPI", "md_mpi_implementation_README.html", [
-      [ "MPI Implementation", "md_mpi_implementation_README.html#autotoc_md9", [
-        [ "Load balancing", "md_mpi_implementation_README.html#autotoc_md10", [
-          [ "Potential issues", "md_mpi_implementation_README.html#autotoc_md11", null ]
+      [ "MPI Implementation", "md_mpi_implementation_README.html#autotoc_md7", [
+        [ "Load balancing", "md_mpi_implementation_README.html#autotoc_md8", [
+          [ "Potential issues", "md_mpi_implementation_README.html#autotoc_md9", null ]
         ] ],
-        [ "TODO", "md_mpi_implementation_README.html#autotoc_md12", null ]
+        [ "TODO", "md_mpi_implementation_README.html#autotoc_md10", null ]
       ] ]
     ] ],
     [ "Q-Digest Parallel Implementation", "md_README.html", [
-      [ "Building the project", "md_README.html#autotoc_md14", null ],
-      [ "Docs", "md_README.html#autotoc_md15", null ]
-    ] ],
-    [ "Instructions for testing", "md_serial_implementation_INSTRUCTIONS.html", [
-      [ "Results of testing on QCore", "md_serial_implementation_INSTRUCTIONS.html#autotoc_md17", null ],
-      [ "Acknowledgments", "md_serial_implementation_INSTRUCTIONS.html#autotoc_md18", null ]
-    ] ],
-    [ "Dataset generator", "md_src_dataset_generator_README.html", [
-      [ "Setup", "md_src_dataset_generator_README.html#autotoc_md20", null ],
-      [ "Example usage", "md_src_dataset_generator_README.html#autotoc_md21", null ]
+      [ "Building the project", "md_README.html#autotoc_md12", null ],
+      [ "Docs", "md_README.html#autotoc_md13", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -86,7 +75,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"test__qcore_8c.html#acd1dfe76806f02c51c5c475816dd5573"
+"test__utils_8c.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

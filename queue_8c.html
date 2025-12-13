@@ -144,7 +144,7 @@ Functions</h2></td></tr>
 <p>This function allocates a new <code>struct queue</code> and initializes its fields so that it represents an empty FIFO queue. Both the <code>first</code> and <code>last</code> pointers are set to NULL, and the length is initialized to zero.</p>
 <p>The queue is typically used to support breadth-first traversal of <a class="el" href="structQDigest.html" title="A struct representing the Q-Digest data structure.">QDigest</a> trees during operations such as merging.</p>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to a newly allocated, empty queue. The caller is responsible for freeing the queue using <code><a class="el" href="queue_8h.html#a8a61f42a0959df368084efde1e875e62" title="Deletes a queue and frees all associated memory.">delete_queue()</a></code> when it is no longer needed.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Memory is allocated using <code><a class="el" href="memory__utils_8h.html#af7b6b8fd37a3c4b944c71b783d50fc96" title="A function that checks whether the memory allocation with malloc returned a NULL pointer implying an ...">xmalloc()</a></code>, which is expected to abort on allocation failure. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Memory is allocated using <code><a class="el" href="memory__utils_8c.html#af7b6b8fd37a3c4b944c71b783d50fc96" title="A function that checks whether the memory allocation with malloc returned a NULL pointer implying an ...">xmalloc()</a></code>, which is expected to abort on allocation failure. </dd></dl>
 
 </div>
 </div>
