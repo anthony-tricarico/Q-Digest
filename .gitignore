@@ -72,3 +72,6 @@ docs/doxygen
 
 # python virutal environments
 .venv
+
+# compile flags to allow the compiler to link with MPI headers
+compile_flags.txt
