@@ -10,7 +10,7 @@
  *
  *  Seeds the C RNG with @p rank so every process chosen for the generation
  *  (default case is the master thread) creates a reproducible sequence, then 
- *  writes @p n values between the given @lb and @ub (lower bound and upper bound)
+ *  writes @p n values between the given @p lb and @p ub (lower bound and upper bound)
  *  (inclusive) into @p data.
  *
  *  @param thread_id Calling thread ID; used both for RNG seeding and to decorrelate buffers.
