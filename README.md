@@ -27,7 +27,7 @@ The quickest way to build the docs and explore them is to run
 `make docs` and then open the `docs/doxygen/html/index.html` file
 in a web browser to explore the documentation interactively.
 
-![WARNING]
+### WARNING
 
 > Make sure to include the directories that should be included for documentation
-> purposes as arguments to the `INCLUDE` field inside the `Doxyfile`.
+> purposes as arguments to the `INPUT` field inside the `Doxyfile`.

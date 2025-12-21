@@ -1009,6 +1009,7 @@ INPUT                  = src \
                          include \
                          serial-implementation \
                          mpi-implementation \
+                         omp-implementation \
                          README.md
 
 # This tag can be used to specify the character encoding of the source files
