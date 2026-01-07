@@ -11,9 +11,6 @@
  * favor of proper user-based I/O */
 // how many numbers to generate
 // also the size of the array (vector) that stores them in process 0
-#define DATA_SIZE 1000
-#define LOWER_BOUND 0
-#define UPPER_BOUND 40
 #define K 200
 
 int main(int argc, char **argv) 
