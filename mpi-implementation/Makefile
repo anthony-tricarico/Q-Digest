@@ -8,7 +8,7 @@ EXEC = $(EXEC_DIR)/main
 
 # Sources
 MPI_SRCS = src/main.c src/tree_reduce.c
-COMMON_SRCS = ../src/qcore.c ../src/memory_utils.c ../src/dynamic_array.c ../src/queue.c
+COMMON_SRCS = ../src/qcore.c ../src/memory_utils.c ../src/dynamic_array.c ../src/queue.c ../src/dataset_reader.c
 # TEST_SRCS = src/test_mpi.c src/tree_reduce.c
 TEST_SRCS = src/test_review.c src/tree_reduce.c
 
