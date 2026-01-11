@@ -15,3 +15,9 @@ that of benchmarking the performance on multiple nodes in a proper
 distributed-memory setting. In order to do that, the PBS directives
 included a `select:2` to select two nodes and used `place=scatter` to
 make sure that the use of inter-node communications would be maximized.
+
+## Fourth run
+
+Performed to add more datapoints to support the scalability analysis.
+Follows the PBS setting of the first two runs. Benchmark here is performed
+only on 32/64 cores and 32M/64M configurations.
