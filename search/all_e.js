@@ -1,13 +1,7 @@
 var searchData=
 [
-  ['q_2ddigest_20parallel_20implementation_0',['Q-Digest Parallel Implementation',['../md_README.html',1,'']]],
-  ['qcore_2ec_1',['qcore.c',['../qcore_8c.html',1,'']]],
-  ['qcore_2eh_2',['qcore.h',['../qcore_8h.html',1,'']]],
-  ['qdigest_3',['QDigest',['../structQDigest.html',1,'']]],
-  ['qdigestnode_4',['QDigestNode',['../structQDigestNode.html',1,'']]],
-  ['quantiles_5',['quantiles',['../namespacegenerate__dataset.html#ad1fc435e9d46dcf2824019af91636b2f',1,'generate_dataset']]],
-  ['queue_6',['queue',['../structqueue.html',1,'']]],
-  ['queue_2ec_7',['queue.c',['../queue_8c.html',1,'']]],
-  ['queue_2eh_8',['queue.h',['../queue_8h.html',1,'']]],
-  ['queuenode_9',['queueNode',['../structqueueNode.html',1,'']]]
+  ['of_20testing_20on_20qcore_0',['Results of testing on QCore',['../md_serial-implementation_2INSTRUCTIONS.html#autotoc_md4',1,'']]],
+  ['ompcore_2ec_1',['ompcore.c',['../ompcore_8c.html',1,'']]],
+  ['ompcore_2eh_2',['ompcore.h',['../ompcore_8h.html',1,'']]],
+  ['on_20qcore_3',['Results of testing on QCore',['../md_serial-implementation_2INSTRUCTIONS.html#autotoc_md4',1,'']]]
 ];

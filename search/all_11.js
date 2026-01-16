@@ -1,26 +1,9 @@
 var searchData=
 [
-  ['test_2ec_0',['test.c',['../test_8c.html',1,'']]],
-  ['test_5fcompress_1',['test_compress',['../test__qcore_8c.html#acd1dfe76806f02c51c5c475816dd5573',1,'test_qcore.c']]],
-  ['test_5fexpand_5ftree_2',['test_expand_tree',['../test__qcore_8c.html#adde6a8b5684a999069a0983a85277f5f',1,'test_qcore.c']]],
-  ['test_5fgeometric_5fdistribution_3',['test_geometric_distribution',['../test__utils_8c.html#a541dd4999dcbde00e682c63f9da6b444',1,'test_geometric_distribution(int n, int k, int seed):&#160;test_utils.c'],['../test__utils_8h.html#a541dd4999dcbde00e682c63f9da6b444',1,'test_geometric_distribution(int n, int k, int seed):&#160;test_utils.c'],['../test_8c.html#a541dd4999dcbde00e682c63f9da6b444',1,'test_geometric_distribution(int n, int k, int seed):&#160;test.c']]],
-  ['test_5finsert_5fand_5fpercentile_4',['test_insert_and_percentile',['../test__qcore_8c.html#a70a101e337609ec3c955ccf94cbc4753',1,'test_qcore.c']]],
-  ['test_5finsert_5fnode_5fand_5ftraversal_5',['test_insert_node_and_traversal',['../test__qcore_8c.html#aade9bbd7a0437b31457c449f44b7df6a',1,'test_qcore.c']]],
-  ['test_5flog_5f2_5fceil_6',['test_log_2_ceil',['../test__qcore_8c.html#accb52ba34c7850ca094352d3aefb2edd',1,'test_qcore.c']]],
-  ['test_5fmerge_7',['test_merge',['../test__qcore_8c.html#a4c5300cb32fa371e18f7f719bd4a0b6f',1,'test_merge(void):&#160;test_qcore.c'],['../test_8c.html#a3da938dd9ba8cbe601e460c0eaeb5b71',1,'test_merge(int n, int k, int seed):&#160;test.c'],['../test__utils_8h.html#a3da938dd9ba8cbe601e460c0eaeb5b71',1,'test_merge(int n, int k, int seed):&#160;test_utils.c'],['../test__utils_8c.html#a3da938dd9ba8cbe601e460c0eaeb5b71',1,'test_merge(int n, int k, int seed):&#160;test_utils.c']]],
-  ['test_5fnode_5fcreate_5fdelete_8',['test_node_create_delete',['../test__qcore_8c.html#a1ea36c4c3d9742e2c73caf5d284df2ec',1,'test_qcore.c']]],
-  ['test_5fpoisson_5fdistribution_9',['test_poisson_distribution',['../test__utils_8h.html#ab80f7ac8c5a4415a19d4d7f796532163',1,'test_poisson_distribution(int n, int k, int seed):&#160;test_utils.c'],['../test__utils_8c.html#ab80f7ac8c5a4415a19d4d7f796532163',1,'test_poisson_distribution(int n, int k, int seed):&#160;test_utils.c'],['../test_8c.html#ab80f7ac8c5a4415a19d4d7f796532163',1,'test_poisson_distribution(int n, int k, int seed):&#160;test.c']]],
-  ['test_5fqcore_2ec_10',['test_qcore.c',['../test__qcore_8c.html',1,'']]],
-  ['test_5fqdigest_5fcreate_5fdelete_11',['test_qdigest_create_delete',['../test__qcore_8c.html#a238f243e1e4963522db4d66cfc6a3a60',1,'test_qcore.c']]],
-  ['test_5frandom_5fdistribution_12',['test_random_distribution',['../test__utils_8c.html#a076396707d3b2abff39dcf719e936ced',1,'test_random_distribution(int n, int k, int seed):&#160;test_utils.c'],['../test__utils_8h.html#a076396707d3b2abff39dcf719e936ced',1,'test_random_distribution(int n, int k, int seed):&#160;test_utils.c'],['../test_8c.html#a076396707d3b2abff39dcf719e936ced',1,'test_random_distribution(int n, int k, int seed):&#160;test.c']]],
-  ['test_5freview_2ec_13',['test_review.c',['../test__review_8c.html',1,'']]],
-  ['test_5fserialization_14',['test_serialization',['../test__qcore_8c.html#aba0c0dc58258aa49d61280a499042ad1',1,'test_qcore.c']]],
-  ['test_5fswap_5fq_15',['test_swap_q',['../test__qcore_8c.html#aa634058f5005e62e110a4cefd98f683b',1,'test_qcore.c']]],
-  ['test_5futils_2ec_16',['test_utils.c',['../test__utils_8c.html',1,'']]],
-  ['test_5futils_2eh_17',['test_utils.h',['../test__utils_8h.html',1,'']]],
-  ['to_5fstring_18',['to_string',['../qcore_8c.html#a7a79f3bb4cc255b3e9bb54710d805d2d',1,'to_string(struct QDigest *q, char *buf, size_t *length):&#160;qcore.c'],['../qcore_8h.html#aacccef5e606069cbf18e500d337268aa',1,'to_string(struct QDigest *q, char *buf, size_t *buf_length):&#160;qcore.c']]],
-  ['tree_5freduce_19',['tree_reduce',['../tree__reduce_8h.html#a657b6250731dfe27d1284da101321045',1,'tree_reduce(struct QDigest *q, int comm_size, int rank, MPI_Comm comm):&#160;tree_reduce.c'],['../tree__reduce_8c.html#a657b6250731dfe27d1284da101321045',1,'tree_reduce(struct QDigest *q, int comm_size, int rank, MPI_Comm comm):&#160;tree_reduce.c']]],
-  ['tree_5freduce_2ec_20',['tree_reduce.c',['../tree__reduce_8c.html',1,'']]],
-  ['tree_5freduce_2eh_21',['tree_reduce.h',['../tree__reduce_8h.html',1,'']]],
-  ['type_22',['type',['../namespacegenerate__dataset.html#a9cb08925f895eed805f720e345d79ac5',1,'generate_dataset']]]
+  ['read_5fints_5ffrom_5ffile_0',['read_ints_from_file',['../dataset__reader_8c.html#ab68b4a4340004374f20634acdaf8f855',1,'read_ints_from_file(const char *filename, int *count_out):&#160;dataset_reader.c'],['../dataset__reader_8h.html#ab68b4a4340004374f20634acdaf8f855',1,'read_ints_from_file(const char *filename, int *count_out):&#160;dataset_reader.c']]],
+  ['readme_2emd_1',['README.md',['../README_8md.html',1,'(Global Namespace)'],['../src_2dataset-generator_2README_8md.html',1,'(Global Namespace)']]],
+  ['result_2',['result',['../namespacegenerate__dataset.html#ac1d87eadfd12d0d5156bddad83346351',1,'generate_dataset']]],
+  ['results_20of_20testing_20on_20qcore_3',['Results of testing on QCore',['../md_serial-implementation_2INSTRUCTIONS.html#autotoc_md4',1,'']]],
+  ['right_4',['right',['../structQDigestNode.html#a917da089a784bfe59a2d2b06bf64c2a1',1,'QDigestNode']]],
+  ['root_5',['root',['../structQDigest.html#ac93cb739218873d2cebec93c4fe762b4',1,'QDigest']]]
 ];

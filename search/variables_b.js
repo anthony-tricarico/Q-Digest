@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parent_0',['parent',['../structQDigestNode.html#afbdde9dc729eef878c01e569bb20d563',1,'QDigestNode']]],
-  ['parser_1',['parser',['../namespacegenerate__dataset.html#adcf82bc50c73f5b70ea8da31a7ced72c',1,'generate_dataset']]]
+  ['quantiles_0',['quantiles',['../namespacegenerate__dataset.html#ad1fc435e9d46dcf2824019af91636b2f',1,'generate_dataset']]]
 ];

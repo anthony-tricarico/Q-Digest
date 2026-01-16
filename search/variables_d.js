@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['result_0',['result',['../namespacegenerate__dataset.html#a8e38ecbe59fb29362daac5640c4ccd84',1,'generate_dataset']]],
-  ['right_1',['right',['../structQDigestNode.html#a917da089a784bfe59a2d2b06bf64c2a1',1,'QDigestNode']]],
-  ['root_2',['root',['../structQDigest.html#ac93cb739218873d2cebec93c4fe762b4',1,'QDigest']]]
+  ['sd_0',['sd',['../namespacegenerate__dataset.html#a6444e167244653564fc0c72e1cc509f3',1,'generate_dataset']]],
+  ['seed_1',['seed',['../namespacegenerate__dataset.html#a05896d225c6aad8a0b97e33c435c8b61',1,'generate_dataset']]],
+  ['size_2',['size',['../structArray.html#a13f67ab957f4fdd3443d7f62b2fd09ce',1,'Array::size'],['../namespacegenerate__dataset.html#a48e1c72524512a8a1193ae3b618be3f7',1,'generate_dataset.size']]]
 ];

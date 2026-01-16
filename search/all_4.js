@@ -1,5 +1,28 @@
 var searchData=
 [
-  ['else_0',['else',['../namespacegenerate__dataset.html#ae5fd92c3e278fd71c1ba43e84e3a0822',1,'generate_dataset']]],
-  ['expand_5ftree_1',['expand_tree',['../qcore_8c.html#aa2c0811b629da7d0af69034b4befcada',1,'expand_tree(struct QDigest *q, size_t upper_bound):&#160;qcore.c'],['../qcore_8h.html#aa2c0811b629da7d0af69034b4befcada',1,'expand_tree(struct QDigest *q, size_t upper_bound):&#160;qcore.c']]]
+  ['daitem_0',['DAItem',['../dynamic__array_8h.html#a56baf61b45eacda7280c67443d51816b',1,'dynamic_array.h']]],
+  ['data_1',['data',['../structArray.html#a0f3ea1bec0f6c32c1b1a83d543ae7507',1,'Array']]],
+  ['data_5fsize_2',['DATA_SIZE',['../omp-implementation_2src_2main_8c.html#af55149bc1f05cf18af067a302e31e3f9',1,'main.c']]],
+  ['dataset_20generator_3',['Dataset generator',['../dir_976b980c1223a1395181c8492801b08c.html#autotoc_md0',1,'']]],
+  ['dataset_5fname_4',['dataset_name',['../namespacegenerate__dataset.html#a98620c5338aa3434a79bb071cbbe6ca5',1,'generate_dataset']]],
+  ['dataset_5freader_2ec_5',['dataset_reader.c',['../dataset__reader_8c.html',1,'']]],
+  ['dataset_5freader_2eh_6',['dataset_reader.h',['../dataset__reader_8h.html',1,'']]],
+  ['debug_7',['DEBUG',['../namespacegenerate__dataset.html#a88769d37b9b91288b3d440bb75b1b0c3',1,'generate_dataset']]],
+  ['delete_5fnode_8',['delete_node',['../qcore_8c.html#a0ad12229e43dc27a1c991a35c3512b74',1,'delete_node(struct QDigestNode *n):&#160;qcore.c'],['../qcore_8h.html#a0ad12229e43dc27a1c991a35c3512b74',1,'delete_node(struct QDigestNode *n):&#160;qcore.c']]],
+  ['delete_5fnode_5fif_5fneeded_9',['delete_node_if_needed',['../qcore_8c.html#a3396d04ea939c49a478693a22f146865',1,'delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level, int l_max):&#160;qcore.c'],['../qcore_8h.html#a3396d04ea939c49a478693a22f146865',1,'delete_node_if_needed(struct QDigest *q, struct QDigestNode *n, int level, int l_max):&#160;qcore.c']]],
+  ['delete_5fqdigest_10',['delete_qdigest',['../qcore_8c.html#a83300c21bd8cc5727249cc7a81d4fe8b',1,'delete_qdigest(struct QDigest *q):&#160;qcore.c'],['../qcore_8h.html#a83300c21bd8cc5727249cc7a81d4fe8b',1,'delete_qdigest(struct QDigest *q):&#160;qcore.c']]],
+  ['delete_5fqueue_11',['delete_queue',['../queue_8c.html#a8a61f42a0959df368084efde1e875e62',1,'delete_queue(struct queue *q):&#160;queue.c'],['../queue_8h.html#a8a61f42a0959df368084efde1e875e62',1,'delete_queue(struct queue *q):&#160;queue.c']]],
+  ['delimiter_12',['delimiter',['../namespacegenerate__dataset.html#a51164dc407fdef92fc2f738094ccbaa1',1,'generate_dataset']]],
+  ['dest_5fdir_5fname_13',['dest_dir_name',['../namespacegenerate__dataset.html#a35d27c741595b4c14cf82434307606c2',1,'generate_dataset']]],
+  ['dest_5fdir_5fpath_14',['dest_dir_path',['../namespacegenerate__dataset.html#aa0592a28aa1d7d8470ef421cad8b8e0c',1,'generate_dataset']]],
+  ['digest_20parallel_20implementation_15',['Q-Digest Parallel Implementation',['../md_README.html',1,'']]],
+  ['dir_5fpath_16',['dir_path',['../namespacegenerate__dataset.html#a9e33031fb52acfcb0d8596bbf69630b1',1,'generate_dataset']]],
+  ['directory_20guide_17',['Directory guide',['../md_README.html#autotoc_md10',1,'']]],
+  ['dist_18',['dist',['../namespacegenerate__dataset.html#adad571fb53cf800e7e384a55b1758d7d',1,'generate_dataset']]],
+  ['distribute_5fdata_5farray_19',['distribute_data_array',['../tree__reduce_8h.html#abf7d150453af22c8d7e186d46fe89497',1,'distribute_data_array(int *src_values, int *local_buf, int *counts, int *displs, int local_n, int rank, size_t buf_size, MPI_Comm comm):&#160;tree_reduce.c'],['../tree__reduce_8c.html#abf7d150453af22c8d7e186d46fe89497',1,'distribute_data_array(int *src_values, int *local_buf, int *counts, int *displs, int local_n, int rank, size_t buf_size, MPI_Comm comm):&#160;tree_reduce.c']]],
+  ['distribution_5fquantiles_20',['distribution_quantiles',['../namespacegenerate__dataset.html#a94302a14596a0d1271cba428cf29c067',1,'generate_dataset']]],
+  ['do_20here_21',['What you can do here',['../md_README.html#autotoc_md7',1,'']]],
+  ['documentation_22',['Documentation',['../md_README.html#autotoc_md9',1,'']]],
+  ['dynamic_5farray_2ec_23',['dynamic_array.c',['../dynamic__array_8c.html',1,'']]],
+  ['dynamic_5farray_2eh_24',['dynamic_array.h',['../dynamic__array_8h.html',1,'']]]
 ];

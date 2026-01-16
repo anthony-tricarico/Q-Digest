@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['max_5fuint32_0',['max_uint32',['../namespacegenerate__dataset.html#a8a49c1245c7413cf3a081e01dc61044d',1,'generate_dataset']]],
-  ['mean_1',['mean',['../namespacegenerate__dataset.html#ae40096da42eefd5c127caf131818a207',1,'generate_dataset']]],
-  ['metavar_2',['metavar',['../namespacegenerate__dataset.html#a8a119c415093d3ea9819d6a68cf88b22',1,'generate_dataset']]]
+  ['n_0',['N',['../structQDigest.html#a3809d4e3ad180d353e4b1ce9edba0d2d',1,'QDigest']]],
+  ['nargs_1',['nargs',['../namespacegenerate__dataset.html#a11506c830af50161067c2edd0bded5e2',1,'generate_dataset']]],
+  ['next_2',['next',['../structqueueNode.html#a35116e094cde90d7490dc4c85afba119',1,'queueNode']]],
+  ['num_5finserts_3',['num_inserts',['../structQDigest.html#a4c96d8b089f2ac44b12f519dabe4f329',1,'QDigest']]],
+  ['num_5fnodes_4',['num_nodes',['../structQDigest.html#af8bacf098c026dbad94ec5a6649ab288',1,'QDigest']]]
 ];

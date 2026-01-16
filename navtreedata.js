@@ -25,25 +25,16 @@
 var NAVTREE =
 [
   [ "Parallel Q-Digest", "index.html", [
-    [ "Dataset generator", "md_src_dataset_generator_README.html", [
-      [ "Setup", "md_src_dataset_generator_README.html#autotoc_md1", null ],
-      [ "Example usage", "md_src_dataset_generator_README.html#autotoc_md2", null ]
-    ] ],
-    [ "Instructions for testing", "md_serial_implementation_INSTRUCTIONS.html", [
-      [ "Results of testing on QCore", "md_serial_implementation_INSTRUCTIONS.html#autotoc_md4", null ],
-      [ "Acknowledgments", "md_serial_implementation_INSTRUCTIONS.html#autotoc_md5", null ]
-    ] ],
-    [ "Instruction to run first version of MPI", "md_mpi_implementation_README.html", [
-      [ "MPI Implementation", "md_mpi_implementation_README.html#autotoc_md7", [
-        [ "Load balancing", "md_mpi_implementation_README.html#autotoc_md8", [
-          [ "Potential issues", "md_mpi_implementation_README.html#autotoc_md9", null ]
-        ] ],
-        [ "TODO", "md_mpi_implementation_README.html#autotoc_md10", null ]
-      ] ]
+    [ "Instructions for testing (LEGACY)", "md_serial-implementation_2INSTRUCTIONS.html", [
+      [ "Results of testing on QCore", "md_serial-implementation_2INSTRUCTIONS.html#autotoc_md4", null ],
+      [ "Acknowledgments", "md_serial-implementation_2INSTRUCTIONS.html#autotoc_md5", null ]
     ] ],
     [ "Q-Digest Parallel Implementation", "md_README.html", [
-      [ "Building the project", "md_README.html#autotoc_md12", null ],
-      [ "Docs", "md_README.html#autotoc_md13", null ]
+      [ "What you can do here", "md_README.html#autotoc_md7", null ],
+      [ "Build &amp; test quickstart", "md_README.html#autotoc_md8", null ],
+      [ "Documentation", "md_README.html#autotoc_md9", null ],
+      [ "Directory guide", "md_README.html#autotoc_md10", null ],
+      [ "Notes", "md_README.html#autotoc_md11", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -75,8 +66,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"test__utils_8c.html"
+"tree__reduce_8h.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronization';
+var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';
